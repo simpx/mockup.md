@@ -9,9 +9,8 @@
 <body>
     <header>
         <div class="container">
-            <h1>mockup.md</h1>
+            <h1>📊 mockup.md</h1>
             <p class="tagline">The Markdown for Slides</p>
-            <p class="subtitle">Sketch ideas and layout. AI does the rest.</p>
             <div class="buttons">
                 <a href="https://github.com/simpx/mockup.md" class="btn btn-primary">View on GitHub</a>
                 <a href="#examples" class="btn btn-secondary">See Examples</a>
@@ -69,24 +68,24 @@
             <h2>Examples</h2>
             <div class="example-grid">
                 <div class="example-card">
-                    <h3>📱 intro</h3>
-                    <p>Product introduction (8 slides)</p>
-                    <a href="https://github.com/simpx/mockup.md/tree/main/examples/intro" class="example-link">View Example →</a>
+                    <h3>📊 mockup-intro</h3>
+                    <p>mockup.md self-introduction</p>
+                    <a href="https://github.com/simpx/mockup.md/tree/main/examples/00-mockup-intro" class="example-link">View Example →</a>
                 </div>
                 <div class="example-card">
-                    <h3>🏗️ tech-rfc</h3>
-                    <p>Technical RFC (6 slides)</p>
-                    <a href="https://github.com/simpx/mockup.md/tree/main/examples/tech-rfc" class="example-link">View Example →</a>
+                    <h3>🏠 airbnb-pitch-deck</h3>
+                    <p>Classic 2009 startup pitch deck</p>
+                    <a href="https://github.com/simpx/mockup.md/tree/main/examples/01-airbnb-pitch-deck" class="example-link">View Example →</a>
                 </div>
                 <div class="example-card">
-                    <h3>🎓 thesis-defense</h3>
-                    <p>Thesis defense (7 slides)</p>
-                    <a href="https://github.com/simpx/mockup.md/tree/main/examples/thesis-defense" class="example-link">View Example →</a>
+                    <h3>🔄 raft-consensus</h3>
+                    <p>Distributed systems paper (Raft)</p>
+                    <a href="https://github.com/simpx/mockup.md/tree/main/examples/02-raft-consensus" class="example-link">View Example →</a>
                 </div>
                 <div class="example-card">
-                    <h3>📊 mapreduce</h3>
-                    <p>Classic paper presentation (15 slides)</p>
-                    <a href="https://github.com/simpx/mockup.md/tree/main/examples/mapreduce" class="example-link">View Example →</a>
+                    <h3>🗄️ spanner-distributed-db</h3>
+                    <p>Distributed database paper (Spanner)</p>
+                    <a href="https://github.com/simpx/mockup.md/tree/main/examples/04-spanner-distributed-db" class="example-link">View Example →</a>
                 </div>
             </div>
         </div>
@@ -105,12 +104,13 @@
                     </ol>
                 </div>
                 <div class="usage-option">
-                    <h3>Option 2: Claude Projects (Recommended)</h3>
+                    <h3>Option 2: Claude Code CLI</h3>
                     <ol>
-                        <li>Create a new Claude Project</li>
-                        <li>Add <a href="https://github.com/simpx/mockup.md/blob/main/mockup.md">mockup.md</a> to Project Knowledge</li>
-                        <li>Optionally add <a href="https://github.com/simpx/mockup.md/blob/main/SKILL.md">SKILL.md</a> for optimization</li>
-                        <li>Start chatting: "Create slides about [topic]"</li>
+                        <li>Install the mockup skill:</li>
+                        <pre style="background: #f5f5f5; padding: 10px; margin: 10px 0; border-radius: 4px;">mkdir -p ~/.claude/skills/mockup
+curl -o ~/.claude/skills/mockup/SKILL.md https://raw.githubusercontent.com/simpx/mockup.md/main/.claude/skills/mockup/SKILL.md
+curl -o ~/.claude/skills/mockup/mockup.md https://raw.githubusercontent.com/simpx/mockup.md/main/mockup.md</pre>
+                        <li>Claude Code will auto-recognize .mu files and mockup-related requests</li>
                     </ol>
                 </div>
             </div>
