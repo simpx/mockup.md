@@ -1,8 +1,8 @@
 # Mockup
 
-**ASCII-based slide layouts, AI-powered rendering.**
+**The Markdown for slides.**
 
-Sketch your presentation with boxes and text, let AI generate polished slide images.
+Sketch your slides with boxes and text, let AI generate polished slide images.
 
 ```mu
 ┌────────────────────────────────────────┐
@@ -18,12 +18,12 @@ Sketch your presentation with boxes and text, let AI generate polished slide ima
 
 ## The Problem
 
-Creating presentations forces you to juggle content and design simultaneously. Mockup separates these concerns — you focus on content and layout intent, AI handles aesthetics and image generation.
+Creating slides forces you to juggle content and design simultaneously. Mockup separates these concerns — you focus on content and layout intent, AI handles aesthetics and image generation.
 
 ## Why Mockup
 
 - **Markdown solved writing** — Focus on content, let the formatter handle typography
-- **Mockup solves presentations** — Focus on content and layout, let AI handle styling and rendering
+- **Mockup solves slides** — Focus on content and layout, let AI handle styling and rendering
 
 Design principles: WYSIWYG, Intent-Driven, AI-Native. See [mockup.md](./mockup.md) for details.
 
@@ -36,7 +36,7 @@ For one-time use with any AI (Claude, ChatGPT, Gemini, etc.):
 1. Copy the entire [mockup.md](./mockup.md) file
 2. Paste it into your AI chat
 3. Then either:
-   - Describe your presentation: `"I need a 5-slide deck about [topic]"`
+   - Describe your slides: `"I need a 5-slide deck about [topic]"`
    - Or provide `.mu` content: `"Generate images from this .mu file: [paste content]"`
 
 The AI will understand both tasks from mockup.md's built-in instructions.
@@ -49,14 +49,14 @@ For ongoing use:
 2. Add [mockup.md](./mockup.md) to Project Knowledge (required)
 3. Optionally add [SKILL.md](./SKILL.md) for optimization
 4. Start chatting:
-   - "Create a presentation about [topic]"
+   - "Create slides about [topic]"
    - Or paste `.mu` files for rendering
 
 The AI will automatically recognize both tasks.
 
 ### What You Can Do
 
-**Task A**: Describe your presentation → AI generates `.mu` file
+**Task A**: Describe your slides → AI generates `.mu` file
 **Task B**: Provide `.mu` file → AI generates slide images
 
 See [mockup.md](./mockup.md) for complete syntax reference and examples.
