@@ -1,54 +1,57 @@
 # Mockup Skill for Claude Projects
 
-> **Note**: This file is optimized for Claude Projects. For one-time use, simply copy [mockup.md](./mockup.md) into any AI chat.
+> **Note**: This file optimizes Claude Projects for Mockup workflows. For one-time use, copy [mockup.md](./mockup.md) into any AI chat — it contains both the specification and complete instructions.
+
+## About This File
+
+The [mockup.md](./mockup.md) file is a **self-contained prompt** with two sections:
+1. **Format Specification** — Complete syntax reference and design principles
+2. **AI Instructions** — Two tasks: generating `.mu` files from content, and generating images from `.mu` files
+
+When you add mockup.md to a Claude Project, you get instant Mockup capability. **This SKILL.md file provides optimization hints for better performance.**
 
 ## When to Activate
 
-Activate this skill when the user requests to:
-- Generate a presentation, PPT, or slides
-- Create a `.mu` file
-- Generate images from `.mu` content
+Activate when the user:
+- Requests a presentation, PPT, or slides
+- Describes content for slides
+- Provides `.mu` file content
+- Asks to generate/render slide images
 
-## Core Instructions
+## Core Reference
 
-**Read [mockup.md](./mockup.md) for the complete format specification.**
+**Always refer to [mockup.md](./mockup.md) for:**
+- Complete syntax (boxes, layouts, arrows, text, graphics, annotations)
+- Design principles (WYSIWYG, Intent-Driven, AI-Native)
+- Task A: Generate `.mu` from descriptions
+- Task B: Generate images from `.mu` files
 
-This file contains:
-- Full syntax reference (boxes, layouts, graphics, annotations)
-- Design principles (WYSIWYG, Intent-Driven, Syntax-Tolerant)
-- Usage instructions for both tasks:
-  - Task A: Generate `.mu` from content descriptions
-  - Task B: Generate images from `.mu` files
+## Key Optimization Tips
 
-## Key Reminders for Claude
+### General
+- Both tasks are defined in mockup.md — read it to understand which task to perform
+- Prioritize user intent over strict syntax adherence
+- Use examples in [examples/](./examples) for reference when generating content
 
-### When Generating `.mu` Files:
-- Use the outermost box to define each slide
-- Recommended width: 60–72 characters (16:9 ratio)
-- Position = alignment (left/center/right)
-- Prefer ASCII graphics over annotations
-- Add metadata (title, author, theme) when appropriate
+### Task A - Generating `.mu` Files
+- Maximize ASCII art (charts, flowcharts, diagrams) — minimize annotations
+- Each slide = one outermost box (60-72 chars wide recommended)
+- Text position = alignment (left/center/right)
+- Box hierarchy: `╔═╗` emphasis > `┌─┐` standard > `┌╌┐` secondary
+- Include YAML frontmatter (title, author, theme) when appropriate
 
-### When Generating Images:
-- Preserve proportions from ASCII layout
-- Box hierarchy: `╔═╗` (emphasis) > `┌─┐` (standard) > `┌╌┐` (secondary)
-- Transform ASCII charts into polished graphics
-- Process annotations for styling (colors, animations)
-- Output: 16:9 aspect ratio, high resolution (1920x1080)
-- Maintain consistent style throughout
+### Task B - Generating Images
+- Preserve ASCII proportions exactly (WYSIWYG principle)
+- Transform ASCII graphics into polished visuals
+- Apply annotations for colors, animations, asset replacements
+- Default style: clean, academic (white background, sans-serif, minimal colors)
+- Output: 16:9 aspect ratio, 1920x1080 recommended
+- Maintain consistency across all slides
 
 ## Examples
 
-See [examples/](./examples) directory for reference:
-- `intro/` - Product introduction
-- `tech-rfc/` - Technical RFC
-- `thesis-defense/` - Academic presentation
-- `mapreduce/` - Paper presentation
-
-## Output Formats
-
-| Context | Output |
-|---------|--------|
-| Standalone request | `.mu` file |
-| Embedded in Markdown | ` ```mu ` code block |
-| Image generation | High-quality PNG/JPEG images |
+Reference these for layout patterns and complexity levels:
+- [intro](./examples/intro/) — Product introduction (8 slides)
+- [tech-rfc](./examples/tech-rfc/) — Technical RFC (6 slides)
+- [thesis-defense](./examples/thesis-defense/) — Thesis defense (7 slides)
+- [mapreduce](./examples/mapreduce/) — Classic paper (15 slides)

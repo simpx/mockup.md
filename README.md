@@ -1,10 +1,10 @@
 # Mockup
 
-Mockup is an ASCII-based layout description language for presentations. Sketch your layout with ASCII characters, and let the renderer produce the final visual output.
+Mockup is an ASCII-based layout description language for slides. Define your slide layouts using ASCII characters, and let AI transform them into polished visual slide images.
 
 ## The Problem
 
-Creating presentations forces you to juggle content and design simultaneously. Mockup separates these concerns — you focus on content and layout, the renderer handles styling.
+Creating presentations forces you to juggle content and design simultaneously. Mockup separates these concerns — you focus on content and layout intent, AI handles aesthetics and image generation.
 
 ```mu
 ┌────────────────────────────────────────┐
@@ -18,68 +18,67 @@ Creating presentations forces you to juggle content and design simultaneously. M
 └────────────────────────────────────────┘
 ```
 
-This defines a slide with a centered title and two connected boxes.
+This defines a slide with a centered title and two connected boxes. AI will render it as a polished slide image.
 
 ## Why Mockup
 
-- **Markdown solved writing** — Focus on content, let the renderer handle formatting
-- **Mockup solves presentations** — Focus on content and layout, let AI handle styling
+- **Markdown solved writing** — Focus on content, let the formatter handle typography
+- **Mockup solves presentations** — Focus on content and layout, let AI handle styling and rendering
 
 ## Design Principles
 
-- **WYSIWYG** — What you draw is what you get
-- **Intent-Driven** — Express layout intent, not pixel-perfect positioning
-- **Syntax-Tolerant** — Imperfect ASCII is interpreted semantically
+- **WYSIWYG** — What you draw is what you get: box position equals element position, box size equals element size
+- **Intent-Driven** — Focus on content and layout, not pixel-perfect positioning or precise operations
+- **AI-Native** — Parsing, rendering, and syntax interpretation are all handled by AI systems
 
 ## Documentation
 
 | File | Description |
 |------|-------------|
-| [mockup.md](./mockup.md) | Format specification & usage guide |
-| [SKILL.md](./SKILL.md) | Claude Project optimization |
-| [examples/](./examples) | Example presentations |
+| [mockup.md](./mockup.md) | **Complete specification + AI instructions** (self-contained) |
+| [SKILL.md](./SKILL.md) | Claude Project optimization hints |
+| [examples/](./examples) | Example presentations with AI-generated images |
 
 ## Getting Started
 
-**Quick Start**: Copy [mockup.md](./mockup.md) and paste into any AI chat, then describe your presentation or provide a `.mu` file.
+**Quick Start**: Copy the entire [mockup.md](./mockup.md) file and paste into any AI chat. It contains both the format specification and complete AI instructions.
 
-**For ongoing use**: Add [mockup.md](./mockup.md) and optionally [SKILL.md](./SKILL.md) to your Claude Project knowledge.
+**For ongoing use**: Add [mockup.md](./mockup.md) to your Claude Project knowledge. Optionally add [SKILL.md](./SKILL.md) for better performance.
 
 ## Usage
 
 ### Option 1: Copy-Paste (Any AI)
 
 **Step 1**: Copy the entire [mockup.md](./mockup.md) file
-
 **Step 2**: Paste into any AI chat (Claude, ChatGPT, Gemini, etc.)
-
 **Step 3**: Choose your task:
 
-**Task A - Generate `.mu` from content:**
+**Task A — Generate `.mu` from content:**
 ```
 I need a presentation about [topic].
 Include: [key points]
 Target audience: [audience]
 ```
 
-**Task B - Generate images from `.mu`:**
+**Task B — Generate images from `.mu`:**
 ```
 Generate presentation images from this .mu file:
 
 [paste your .mu content]
 ```
 
-The mockup.md file contains both the format specification and usage instructions.
+The AI will understand what to do from the instructions in mockup.md.
 
-### Option 2: Claude Projects (Recommended for Ongoing Use)
+### Option 2: Claude Projects (Recommended)
 
 1. Create a new Claude Project
-2. Add `mockup.md` (required) and optionally `SKILL.md` (optimization) to your project knowledge
-3. Start conversations and simply:
+2. Add [mockup.md](./mockup.md) to Project Knowledge (required)
+3. Optionally add [SKILL.md](./SKILL.md) for optimization
+4. Start conversations and simply:
    - Describe your presentation needs, or
-   - Provide `.mu` files for image generation
+   - Provide `.mu` files for rendering
 
-Claude will automatically understand both tasks from the mockup.md file.
+The AI will automatically recognize both tasks.
 
 ### Option 3: VS Code
 
@@ -88,12 +87,12 @@ Claude will automatically understand both tasks from the mockup.md file.
 > Planned features:
 > - Syntax highlighting for `.mu` files
 > - Live preview panel
-> - AI-powered generation via Claude integration
+> - AI-powered generation via integration
 > - Export to common formats (PDF, PNG, PowerPoint)
 
 For now:
-1. Create `.mu` files in VS Code with plain text editing
-2. Use ASCII box-drawing characters (see [mockup.md](./mockup.md) Quick Reference)
+1. Create `.mu` files in VS Code with plain text
+2. Use ASCII box-drawing characters (see mockup.md Quick Reference)
 3. Copy mockup.md into AI chat for generation/rendering
 
 ## Examples
