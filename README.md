@@ -1,24 +1,33 @@
-# Mockup
+# mockup.md
 
 **The Markdown for slides.**
 
-Sketch your slides with boxes and text, let AI generate polished slide images.
+Sketch ideas and layout. AI does the rest.
 
 ```mu
-┌────────────────────────────────────────┐
-│                                        │
-│            **Hello World**             │
-│                                        │
-│    ┌──────┐           ┌──────┐        │
-│    │  A   │  ───→     │  B   │        │
-│    └──────┘           └──────┘        │
-│                                        │
-└────────────────────────────────────────┘
+┌────────────────────────────────────────────────────────────────┐
+│                                                                │
+│                       **mockup.md**                            │
+│                   The Markdown for slides                      │
+│                                                                │
+│   ┌────────────┐      ┌────────────┐      ┌────────────┐      │
+│   │            │      │            │      │            │      │
+│   │  💭 Your   │  ──→ │  📝 .mu    │  ──→ │  🎨 Slide  │      │
+│   │   ideas    │      │   file     │      │   images   │      │
+│   │            │      │            │      │            │      │
+│   └────────────┘      └────────────┘      └────────────┘      │
+│                                                                │
+│        Describe      AI generates      AI renders             │
+│        content       ASCII layout      polished slides         │
+│                                                                │
+└────────────────────────────────────────────────────────────────┘
 ```
 
 ## The Problem
 
-Creating slides forces you to juggle content and design simultaneously. Mockup separates these concerns — you focus on content and layout intent, AI handles aesthetics and image generation.
+Making slides is painful. Traditional tools make you juggle content, layout, and styling — exhausting. AI-generated slides give random, inconsistent results — frustrating. AI-generated formats (Mermaid, DrawIO) aren't visual enough, hard to edit and version.
+
+**Mockup: sketch in ASCII, render with AI. Simple, predictable, visual.**
 
 ## Why Mockup
 
