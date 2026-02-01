@@ -277,7 +277,7 @@ softmax(────) V
 Or specify LaTeX via annotation:
 
 ```
-> [1] render as LaTeX: \frac{QK^T}{\sqrt{d}}
+> ① render as LaTeX: \frac{QK^T}{\sqrt{d}}
 ```
 
 ## Annotations
@@ -295,33 +295,33 @@ Lines starting with `>` are annotations. They pass instructions to AI for image 
 
 ### Markers
 
-Use `[1]` `[2]` `[3]` to mark elements and reference them in annotations:
+Use ①②③ to mark elements and reference them in annotations:
 
 ```
 ┌────────────────────────────────────────┐
 │                                        │
 │    ┌──────┐         ┌──────┐          │
-│    │ A [1]│  ────→  │ B [2]│          │
+│    │ A ① │  ────→  │ B ② │          │
 │    └──────┘         └──────┘          │
 │                                        │
 └────────────────────────────────────────┘
 
-> [1] color: red
-> [2] color: green
+> ① color: red
+> ② color: green
 ```
 
-Markers can be any number: `[1]` `[2]` ... `[99]` etc.
+Available markers: ①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳, then (21)(22)... for more.
 
 ### Common Annotations
 
 | Purpose | Example |
 |---------|---------|
-| Color | `> [1] color: #EF4444` or `> [1] color: red` |
-| Animation | `> [1] appears first, then [2]` |
-| Asset replacement | `> [1] replace with: photo.jpg` |
-| Link | `> [1] link: https://example.com` |
-| LaTeX | `> [1] render as LaTeX: E=mc^2` |
-| Code language | `> [1] language: python` |
+| Color | `> ① color: #EF4444` or `> ① color: red` |
+| Animation | `> ① appears first, then ②` |
+| Asset replacement | `> ① replace with: photo.jpg` |
+| Link | `> ① link: https://example.com` |
+| LaTeX | `> ① render as LaTeX: E=mc^2` |
+| Code language | `> ① language: python` |
 | Background | `> background: dark-blue` |
 | Background image | `> background-image: bg.jpg` |
 | Skip slide | `> skip` |
@@ -358,14 +358,14 @@ theme: academic
 │                                                                │
 │      ┌──────────┐      ┌──────────┐      ┌──────────┐         │
 │      │   📝    │      │    🤖    │      │    🎨    │         │
-│      │Draft [1]│ ───→ │Generate[2]│ ───→ │Images [3]│         │
+│      │ Draft①  │ ───→ │Generate② │ ───→ │ Images③ │         │
 │      └──────────┘      └──────────┘      └──────────┘         │
 │                                                                │
 └────────────────────────────────────────────────────────────────┘
 
-> [1] User describes requirements
-> [2] AI generates mu draft
-> [3] AI generates final slide images
+> ① User describes requirements
+> ② AI generates mu draft
+> ③ AI generates final slide images
 > Boxes appear sequentially
 ```
 
@@ -382,7 +382,7 @@ Arrows
 → ← ↑ ↓ ↗ ↘ ↙ ↖
 
 Markers
-[1] [2] [3] ... [n]
+①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳
 
 Fills
 █ ▓ ▒ ░ ■ □
@@ -499,9 +499,9 @@ theme: theme-name
 - Apply consistent visual style
 
 **Step 4: Apply Annotations**
-- Process color specifications: `> [1] color: red` or `> [1] color: #EF4444`
-- Handle asset replacements: `> [1] replace with: photo.jpg`
-- Note animation sequences: `> [1] appears first, then [2]`
+- Process color specifications: `> ① color: red` or `> ① color: #EF4444`
+- Handle asset replacements: `> ① replace with: photo.jpg`
+- Note animation sequences: `> ① appears first, then ②`
 - Set backgrounds: `> background: dark-blue`
 - **Exclude** speaker notes from images: `> notes: pause here`
 
@@ -592,5 +592,6 @@ theme: theme-name
 - You can handle both tasks in a single conversation
 - Always prioritize user intent over strict syntax adherence
 - Use the syntax and examples in this document as your reference
+- If available, you can also reference the `examples/` directory for more complete samples
 
 
