@@ -2,6 +2,16 @@
 
 Mockup is an ASCII-based layout description language for presentations. Define your slide layouts using ASCII characters, and let AI transform them into polished visual presentation images.
 
+## About This Document
+
+**For humans**: This is the complete format specification for Mockup. Read it to understand the syntax, design principles, and capabilities.
+
+**For AI systems**: This document is a self-contained prompt. When a user pastes this entire file:
+1. Read the specification below to understand Mockup syntax
+2. Then follow the [AI Instructions](#ai-instructions) at the end to perform the requested task
+
+---
+
 ## Overview
 
 **The Problem**: When creating presentations, content ideation and visual design compete for attention. Mockup separates these concerns — users focus on content and layout intent, while AI handles aesthetics and image generation.
@@ -387,80 +397,194 @@ Common Emoji
 
 ---
 
-# How to Use This Document
+# AI Instructions
 
-This document serves both as a **format specification** and a **prompt for AI systems**. You can use it in two ways:
+When a user has pasted this document into a conversation, you are now a Mockup specialist. You have two main tasks:
 
-## Option 1: Copy-Paste for One-Time Use
+## Task A: Generate `.mu` Files from Content
 
-Copy this entire document and paste it into any AI chat (Claude, ChatGPT, Gemini, etc.), then:
+**When to activate**: User describes presentation content, mentions slides/PPT, or requests to create a presentation.
 
-### Task A: Generate `.mu` from Content
+### Your Process
 
-**When you want to create a presentation layout from content:**
+**Step 1: Analyze Requirements**
+- Understand the topic, purpose, and audience
+- Identify key points and structure
+- Determine appropriate slide count
 
-After pasting this document, tell the AI:
+**Step 2: Design Layouts**
+- Use syntax from the specification above
+- Apply design principles (WYSIWYG, Intent-Driven, Syntax-Tolerant)
+- Choose appropriate box styles for hierarchy
+- Create ASCII graphics for data visualization
+
+**Step 3: Generate Output**
+- Start with YAML frontmatter (optional but recommended)
+- One outermost box per slide (60-72 characters wide recommended)
+- Use proper text alignment (position = alignment)
+- Add annotations sparingly
+
+### Key Constraints
+
+**DO:**
+- ✅ Maximize ASCII art (charts, flowcharts, diagrams, UI mockups)
+- ✅ Use emoji for icons and visual interest
+- ✅ Use box hierarchy: `╔═╗` (emphasis) > `┌─┐` (standard) > `┌╌┐` (secondary)
+- ✅ Respect WYSIWYG principle: box position/size = element position/size
+- ✅ Add metadata (title, author, theme) when appropriate
+
+**DON'T:**
+- ❌ Over-use annotations - prefer ASCII graphics
+- ❌ Use `> replace with: xxx.jpg` unless for real photos/videos
+- ❌ Create slides wider than 72 characters
+- ❌ Ignore text alignment rules (position matters)
+
+### Output Format
+
+```yaml
+---
+title: Presentation Title
+author: Author Name
+theme: theme-name
+---
+
+┌────────────────────────────────────────┐
+│                                        │
+│         **Slide Title**                │
+│                                        │
+│              Content                   │
+│                                        │
+└────────────────────────────────────────┘
+
+> annotations if needed
+
+┌────────────────────────────────────────┐
+│                                        │
+│         **Next Slide**                 │
+│                                        │
+└────────────────────────────────────────┘
 ```
-I need a presentation about [topic].
-Include: [key points]
-Target audience: [audience]
-Number of slides: [number]
+
+### Examples
+
+**User request**: "Create a 3-slide presentation about our Q4 growth"
+
+**Your response**: Generate `.mu` file with:
+- Slide 1: Title/cover with company name
+- Slide 2: Growth metrics with ASCII bar chart
+- Slide 3: Key insights or call-to-action
+
+---
+
+## Task B: Generate Images from `.mu` Files
+
+**When to activate**: User provides `.mu` file content and requests images/rendering.
+
+### Your Process
+
+**Step 1: Parse Structure**
+- Read YAML frontmatter for theme/metadata
+- Identify each slide (outermost boxes)
+- Extract annotations (lines starting with `>`)
+
+**Step 2: Interpret Layout**
+- Apply WYSIWYG principle: ASCII position/size = visual position/size
+- Understand box hierarchy from line styles
+- Read text alignment from position
+
+**Step 3: Transform ASCII to Graphics**
+- Convert ASCII charts → professional visualizations
+- Transform flowcharts → clean diagrams
+- Render emoji as icons (or keep if theme-appropriate)
+- Apply consistent visual style
+
+**Step 4: Apply Annotations**
+- Process color specifications: `> ① color: red` or `> ① color: #EF4444`
+- Handle asset replacements: `> ① replace with: photo.jpg`
+- Note animation sequences: `> ① appears first, then ②`
+- Set backgrounds: `> background: dark-blue`
+- **Exclude** speaker notes from images: `> notes: pause here`
+
+**Step 5: Generate Images**
+- One image per slide
+- Aspect ratio: 16:9 (recommended 1920x1080)
+- High quality, presentation-ready
+- Maintain style consistency across all slides
+
+### Rendering Guidelines
+
+**Proportions** (Critical):
+- If ASCII box is 50% of slide width → render as 50% width
+- Maintain column width ratios in split layouts
+- Preserve vertical spacing and padding
+
+**Box Hierarchy**:
+- `╔═╗` double-line → Bold/thick borders, emphasized content
+- `┌─┐` single-line → Standard borders, normal weight
+- `┌╌┐` dashed → Subtle/light borders, supporting info
+- `╭─╮` rounded → Modern style with rounded corners
+
+**Text**:
+- Left-aligned ASCII → left-aligned text
+- Centered ASCII → centered text
+- Right-aligned ASCII → right-aligned text
+- `**bold**` → bold font
+- `*italic*` → italic font
+
+**ASCII Graphics Transformation**:
+
+| ASCII Input | Render As |
+|-------------|-----------|
+| `███` bars | Polished bar charts with colors and gradients |
+| `· ·` line plots | Smooth line graphs with data points |
+| Box diagrams | Clean flowcharts with proper connectors |
+| Emoji 🚀📊 | Professional icons or keep emoji based on theme |
+| `───→` arrows | Smooth vector arrows |
+| UI sketches | Clean interface mockups |
+
+**Style Consistency**:
+- Choose color scheme from theme metadata
+- Use consistent fonts throughout
+- Maintain uniform spacing and padding
+- Apply consistent border-radius to boxes
+
+**Auto-Correction** (Syntax-Tolerant Principle):
+- Fix slightly misaligned boxes
+- Interpret similar characters semantically
+- Focus on reconstructing layout intent
+- Don't fail on minor syntax errors
+
+### Examples
+
+**User provides**:
+```mu
+┌────────────────────────────────────────┐
+│                                        │
+│         **Revenue Growth**             │
+│                                        │
+│    │                                   │
+│    │      ███                          │
+│    │  ███ ███                          │
+│    └───────────                        │
+│      Q1   Q2                           │
+└────────────────────────────────────────┘
+
+> Chart bars color: green
 ```
 
-**The AI will:**
-1. Analyze your requirements
-2. Choose appropriate layouts from the syntax above
-3. Generate a complete `.mu` file with ASCII layouts
-4. Include metadata (title, author, theme)
-5. Add annotations where needed
+**You generate**: A professional slide image with:
+- Title "Revenue Growth" centered at top
+- Clean bar chart with two green bars (Q1 lower, Q2 higher)
+- Proper spacing and typography
+- 16:9 aspect ratio, high resolution
 
-**Example request:**
-```
-I need a 5-slide presentation about our new mobile app.
-Include: problem, solution, features, roadmap, and call-to-action.
-Target audience: investors.
-```
+---
 
-### Task B: Generate Images from `.mu`
+## Additional Notes
 
-**When you have a `.mu` file and want presentation images:**
+- When in doubt about which task, ask the user to clarify
+- You can handle both tasks in a single conversation
+- Always prioritize user intent over strict syntax adherence
+- Reference the examples in `examples/` directory for inspiration
 
-After pasting this document, tell the AI:
-```
-Generate presentation images from this .mu file:
 
-[paste your .mu file content here]
-```
-
-**The AI will:**
-1. Parse the `.mu` file structure
-2. Interpret box positions and sizes (WYSIWYG principle)
-3. Transform ASCII graphics into polished visuals
-4. Apply annotations (colors, animations, etc.)
-5. Generate high-quality images (16:9, 1920x1080)
-6. Maintain style consistency
-
-**Image generation guidelines:**
-- Preserve proportions: box size ratios = element size ratios
-- Text alignment: left/center/right based on ASCII position
-- Box hierarchy: double-line `╔═╗` = emphasis, single-line `┌─┐` = standard
-- ASCII charts → professional graphics (bars, lines, flows)
-- Emoji → icons or keep as-is depending on theme
-- Annotations control styling but don't appear in output
-
-## Option 2: Add to Claude Project
-
-For ongoing use:
-1. Add this document to your Claude Project knowledge
-2. Claude will automatically understand both tasks
-3. Simply describe your presentation needs or provide `.mu` files
-
-## Examples
-
-See the `examples/` directory for complete presentations:
-- `intro/` - Product introduction (8 slides)
-- `tech-rfc/` - Technical RFC (6 slides)
-- `thesis-defense/` - Academic presentation (7 slides)
-- `mapreduce/` - Paper presentation (15 slides)
-
-Each example shows how to use syntax elements in real presentations.
