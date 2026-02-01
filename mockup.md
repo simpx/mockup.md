@@ -1,6 +1,6 @@
 # Mockup Specification
 
-Mockup is an ASCII-based layout description language for presentations. Define your slide layouts using ASCII characters, and let AI transform them into polished visual presentation images.
+Mockup is an ASCII-based layout description language for slides. Define your slide layouts using ASCII characters, and let AI transform them into polished visual slide images.
 
 ## About This Document
 
@@ -14,13 +14,13 @@ Mockup is an ASCII-based layout description language for presentations. Define y
 
 ## Overview
 
-**The Problem**: When creating presentations, content ideation and visual design compete for attention. Mockup separates these concerns — users focus on content and layout intent, while AI handles aesthetics and image generation.
+**The Problem**: When creating slides, content ideation and visual design compete for attention. Mockup separates these concerns — users focus on content and layout intent, while AI handles aesthetics and image generation.
 
 **Design Principles**:
 
-- **WYSIWYG** — Box position equals element position, box size equals element size, text position equals alignment
-- **Intent-Driven** — Focus on expressing layout intent, not precise character placement
-- **Syntax-Tolerant** — Misaligned boxes are auto-corrected, similar characters are interpreted semantically
+- **WYSIWYG** — What you draw is what you get: box position equals element position, box size equals element size
+- **Intent-Driven** — Focus on content and layout, not pixel-perfect positioning or precise operations
+- **AI-Native** — Parsing, rendering, and syntax interpretation are all handled by AI systems
 
 ## Usage
 
@@ -44,14 +44,24 @@ presentation.mu
 
 ```
 ---
-metadata (optional)
+title: Mockup Example
+author: simpx (simpxx@gmail.com)
+theme: academic
 ---
 
-slide 1
+┌────────────────────────────────────────┐
+│                                        │
+│             Slide 1                    │
+│                                        │
+└────────────────────────────────────────┘
 
 > annotations for slide 1
 
-slide 2
+┌────────────────────────────────────────┐
+│                                        │
+│             Slide 2                    │
+│                                        │
+└────────────────────────────────────────┘
 
 > annotations for slide 2
 ```
@@ -62,21 +72,13 @@ Define global properties using YAML front matter:
 
 ```yaml
 ---
-title: Product Launch
-author: John Doe
-theme: blue-tech
+title: Mockup Introduction
+author: simpx (simpxx@gmail.com)
+theme: academic
 ---
 ```
 
-Or using annotation syntax:
-
-```
-> title: Product Launch
-> author: John Doe
-> theme: blue-tech
-```
-
-Both formats are supported. All fields are optional.
+All fields are optional.
 
 ## Syntax
 
@@ -275,7 +277,7 @@ softmax(────) V
 Or specify LaTeX via annotation:
 
 ```
-> ① render as LaTeX: \frac{QK^T}{\sqrt{d}}
+> [1] render as LaTeX: \frac{QK^T}{\sqrt{d}}
 ```
 
 ## Annotations
@@ -293,35 +295,33 @@ Lines starting with `>` are annotations. They pass instructions to AI for image 
 
 ### Markers
 
-Use ①②③ to mark elements and reference them in annotations:
+Use `[1]` `[2]` `[3]` to mark elements and reference them in annotations:
 
 ```
 ┌────────────────────────────────────────┐
 │                                        │
 │    ┌──────┐         ┌──────┐          │
-│    │ A ①  │  ────→  │ B ②  │          │
+│    │ A [1]│  ────→  │ B [2]│          │
 │    └──────┘         └──────┘          │
 │                                        │
 └────────────────────────────────────────┘
 
-> ① color: red
-> ② color: green
+> [1] color: red
+> [2] color: green
 ```
 
-Available markers: ①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳
-
-For more than 20, use `(21)` `(22)` etc.
+Markers can be any number: `[1]` `[2]` ... `[99]` etc.
 
 ### Common Annotations
 
 | Purpose | Example |
 |---------|---------|
-| Color | `> ① color: #EF4444` or `> ① color: red` |
-| Animation | `> ① appears first, then ②` |
-| Asset replacement | `> ① replace with: photo.jpg` |
-| Link | `> ① link: https://example.com` |
-| LaTeX | `> ① render as LaTeX: E=mc^2` |
-| Code language | `> ① language: python` |
+| Color | `> [1] color: #EF4444` or `> [1] color: red` |
+| Animation | `> [1] appears first, then [2]` |
+| Asset replacement | `> [1] replace with: photo.jpg` |
+| Link | `> [1] link: https://example.com` |
+| LaTeX | `> [1] render as LaTeX: E=mc^2` |
+| Code language | `> [1] language: python` |
 | Background | `> background: dark-blue` |
 | Background image | `> background-image: bg.jpg` |
 | Skip slide | `> skip` |
@@ -334,8 +334,8 @@ Annotations support natural language. No fixed format required.
 ```mu
 ---
 title: Mockup Introduction
-author: Lingjun
-theme: purple-gradient
+author: simpx (simpxx@gmail.com)
+theme: academic
 ---
 
 ┌────────────────────────────────────────────────────────────────┐
@@ -344,7 +344,7 @@ theme: purple-gradient
 │                         │M│ ockup                              │
 │                         └─┘                                    │
 │                                                                │
-│                    The Markdown for PPT                        │
+│                   The Markdown for Slides                      │
 │                                                                │
 │                          🚀                                    │
 │                                                                │
@@ -358,14 +358,14 @@ theme: purple-gradient
 │                                                                │
 │      ┌──────────┐      ┌──────────┐      ┌──────────┐         │
 │      │   📝    │      │    🤖    │      │    🎨    │         │
-│      │ Draft①  │ ───→ │Generate② │ ───→ │ Images③ │         │
+│      │Draft [1]│ ───→ │Generate[2]│ ───→ │Images [3]│         │
 │      └──────────┘      └──────────┘      └──────────┘         │
 │                                                                │
 └────────────────────────────────────────────────────────────────┘
 
-> ① User describes requirements
-> ② AI generates mu draft
-> ③ AI generates final presentation images
+> [1] User describes requirements
+> [2] AI generates mu draft
+> [3] AI generates final slide images
 > Boxes appear sequentially
 ```
 
@@ -382,7 +382,7 @@ Arrows
 → ← ↑ ↓ ↗ ↘ ↙ ↖
 
 Markers
-①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰⑱⑲⑳
+[1] [2] [3] ... [n]
 
 Fills
 █ ▓ ▒ ░ ■ □
@@ -499,9 +499,9 @@ theme: theme-name
 - Apply consistent visual style
 
 **Step 4: Apply Annotations**
-- Process color specifications: `> ① color: red` or `> ① color: #EF4444`
-- Handle asset replacements: `> ① replace with: photo.jpg`
-- Note animation sequences: `> ① appears first, then ②`
+- Process color specifications: `> [1] color: red` or `> [1] color: #EF4444`
+- Handle asset replacements: `> [1] replace with: photo.jpg`
+- Note animation sequences: `> [1] appears first, then [2]`
 - Set backgrounds: `> background: dark-blue`
 - **Exclude** speaker notes from images: `> notes: pause here`
 
@@ -542,8 +542,14 @@ theme: theme-name
 | `───→` arrows | Smooth vector arrows |
 | UI sketches | Clean interface mockups |
 
+**Default Style** (when no theme specified):
+- White/light background (like academic papers)
+- Clean sans-serif fonts (e.g., Helvetica, Arial)
+- Minimal colors: black text, blue for links/accents
+- Professional and readable, suitable for technical content
+
 **Style Consistency**:
-- Choose color scheme from theme metadata
+- Choose color scheme from theme metadata (or use default above)
 - Use consistent fonts throughout
 - Maintain uniform spacing and padding
 - Apply consistent border-radius to boxes
@@ -585,6 +591,6 @@ theme: theme-name
 - When in doubt about which task, ask the user to clarify
 - You can handle both tasks in a single conversation
 - Always prioritize user intent over strict syntax adherence
-- Reference the examples in `examples/` directory for inspiration
+- Use the syntax and examples in this document as your reference
 
 
