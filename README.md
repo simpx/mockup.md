@@ -50,18 +50,26 @@ For one-time use with any AI (Claude, ChatGPT, Gemini, etc.):
 
 The AI will understand both tasks from mockup.md's built-in instructions.
 
-### Option 2: Claude Projects (Recommended)
+### Option 2: Claude Projects
 
-For ongoing use:
+For ongoing use in Claude web:
 
 1. Create a new Claude Project
-2. Add [mockup.md](./mockup.md) to Project Knowledge (required)
-3. Optionally add [SKILL.md](./SKILL.md) for optimization
-4. Start chatting:
+2. Add [mockup.md](./mockup.md) to Project Knowledge
+3. Start chatting:
    - "Create slides about [topic]"
    - Or paste `.mu` files for rendering
 
-The AI will automatically recognize both tasks.
+### Option 3: Claude Code CLI
+
+For terminal users:
+
+```bash
+git clone https://github.com/simpx/mockup.md.git
+cp -rL mockup.md/.claude/skills/mockup ~/.claude/skills/
+```
+
+Claude Code will auto-recognize `.mu` files and mockup-related requests.
 
 ### What You Can Do
 
