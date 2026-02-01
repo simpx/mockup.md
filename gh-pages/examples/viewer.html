@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example Viewer - mockup.md</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+            background: #f8f9fa;
+        }
+
+        .viewer-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+        }
+
+        .viewer-header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .back-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            opacity: 0.9;
+            transition: opacity 0.3s;
+        }
+
+        .back-link:hover {
+            opacity: 1;
+        }
+
+        .viewer-title h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .viewer-title p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .viewer-container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .viewer-card {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .viewer-tabs {
+            display: flex;
+            border-bottom: 2px solid #e2e8f0;
+            background: #f7fafc;
+        }
+
+        .viewer-tab {
+            flex: 1;
+            padding: 16px 20px;
+            border: none;
+            background: transparent;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #718096;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+        }
+
+        .viewer-tab:hover {
+            color: #4a5568;
+            background: #edf2f7;
+        }
+
+        .viewer-tab.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+            background: white;
+        }
+
+        .viewer-content {
+            min-height: 500px;
+        }
+
+        .viewer-panel {
+            display: none;
+            padding: 30px;
+        }
+
+        .viewer-panel.active {
+            display: block;
+        }
+
+        .mockup-source {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 24px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Courier New', Monaco, monospace;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .slide-viewer {
+            text-align: center;
+        }
+
+        .slide-display {
+            background: #f7fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .slide-display img {
+            max-width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+        }
+
+        .slide-placeholder {
+            text-align: center;
+            color: #a0aec0;
+            padding: 60px;
+        }
+
+        .slide-placeholder span {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .slide-placeholder small {
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
+        .slide-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .slide-nav button {
+            padding: 10px 20px;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 6px;
+            font-weight: 600;
+            color: #4a5568;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slide-nav button:hover:not(:disabled) {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .slide-nav button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            font-weight: 600;
+            color: #4a5568;
+            min-width: 80px;
+        }
+
+        .slide-thumbs {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 100%;
+            padding: 10px 0;
+        }
+
+        .thumb {
+            width: 36px;
+            height: 36px;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #718096;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .thumb:hover {
+            border-color: #667eea;
+            color: #667eea;
+        }
+
+        .thumb.active {
+            background: #667eea;
+            border-color: #667eea;
+            color: white;
+        }
+
+        .github-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .github-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .github-link a:hover {
+            text-decoration: underline;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: #718096;
+        }
+
+        .error {
+            text-align: center;
+            padding: 60px;
+            color: #e53e3e;
+        }
+
+        @media (max-width: 768px) {
+            .viewer-header .container {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            .viewer-tabs {
+                flex-wrap: wrap;
+            }
+
+            .viewer-tab {
+                flex: 1 1 50%;
+                padding: 12px;
+                font-size: 0.9rem;
+            }
+
+            .mockup-source {
+                font-size: 0.65rem;
+            }
+
+            .slide-nav button {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="viewer-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">← Back to Home</a>
+            <div class="viewer-title">
+                <h1 id="example-title">Loading...</h1>
+                <p id="example-description"></p>
+            </div>
+            <div></div>
+        </div>
+    </header>
+
+    <div class="viewer-container">
+        <div class="viewer-card">
+            <div class="viewer-tabs">
+                <button class="viewer-tab active" data-tab="mockup">Mockup</button>
+                <button class="viewer-tab" data-tab="gpt-5.2">GPT-5.2</button>
+                <button class="viewer-tab" data-tab="nanobanana">Nanobanana</button>
+                <button class="viewer-tab" data-tab="notebookllm">NotebookLLM</button>
+            </div>
+
+            <div class="viewer-content">
+                <!-- Mockup Source Tab -->
+                <div class="viewer-panel active" id="panel-mockup">
+                    <div class="loading" id="mockup-loading">Loading mockup source...</div>
+                    <pre class="mockup-source" id="mockup-source" style="display:none;"></pre>
+                </div>
+
+                <!-- AI Output Tabs -->
+                <div class="viewer-panel" id="panel-gpt-5.2">
+                    <div class="slide-viewer" data-ai="gpt-5.2">
+                        <div class="slide-display">
+                            <div class="slide-placeholder">
+                                <span>GPT-5.2 Output</span>
+                                <small>Coming Soon</small>
+                            </div>
+                        </div>
+                        <div class="slide-nav">
+                            <button class="slide-prev" disabled>◀ Prev</button>
+                            <span class="slide-counter">1 / 1</span>
+                            <button class="slide-next" disabled>Next ▶</button>
+                        </div>
+                        <div class="slide-thumbs"></div>
+                    </div>
+                </div>
+
+                <div class="viewer-panel" id="panel-nanobanana">
+                    <div class="slide-viewer" data-ai="nanobanana">
+                        <div class="slide-display">
+                            <div class="slide-placeholder">
+                                <span>Nanobanana Output</span>
+                                <small>Coming Soon</small>
+                            </div>
+                        </div>
+                        <div class="slide-nav">
+                            <button class="slide-prev" disabled>◀ Prev</button>
+                            <span class="slide-counter">1 / 1</span>
+                            <button class="slide-next" disabled>Next ▶</button>
+                        </div>
+                        <div class="slide-thumbs"></div>
+                    </div>
+                </div>
+
+                <div class="viewer-panel" id="panel-notebookllm">
+                    <div class="slide-viewer" data-ai="notebookllm">
+                        <div class="slide-display">
+                            <div class="slide-placeholder">
+                                <span>NotebookLLM Output</span>
+                                <small>Coming Soon</small>
+                            </div>
+                        </div>
+                        <div class="slide-nav">
+                            <button class="slide-prev" disabled>◀ Prev</button>
+                            <span class="slide-counter">1 / 1</span>
+                            <button class="slide-next" disabled>Next ▶</button>
+                        </div>
+                        <div class="slide-thumbs"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="github-link">
+            <a id="github-link" href="#" target="_blank">View source on GitHub →</a>
+        </div>
+    </div>
+
+    <script>
+        // Example metadata
+        const examples = {
+            '00-mockup-intro': {
+                title: 'mockup-intro',
+                description: 'mockup.md self-introduction',
+                slides: 2
+            },
+            '01-airbnb-pitch-deck': {
+                title: 'airbnb-pitch-deck',
+                description: 'Classic 2009 startup pitch deck',
+                slides: 10
+            },
+            '02-raft-consensus': {
+                title: 'raft-consensus',
+                description: 'Distributed systems paper (Raft)',
+                slides: 15
+            },
+            '03-transformer': {
+                title: 'transformer',
+                description: 'Attention mechanism explained',
+                slides: 24
+            },
+            '04-spanner-distributed-db': {
+                title: 'spanner',
+                description: 'Distributed database (Spanner)',
+                slides: 20
+            },
+            '05-gfs': {
+                title: 'gfs',
+                description: 'Google File System paper',
+                slides: 22
+            }
+        };
+
+        const aiModels = ['gpt-5.2', 'nanobanana', 'notebookllm'];
+
+        // Get example from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const exampleId = urlParams.get('example');
+        const example = examples[exampleId];
+
+        if (!example) {
+            document.getElementById('example-title').textContent = 'Example not found';
+            document.getElementById('example-description').textContent = 'Please select an example from the home page.';
+        } else {
+            // Set page info
+            document.getElementById('example-title').textContent = example.title;
+            document.getElementById('example-description').textContent = example.description;
+            document.title = `${example.title} - mockup.md`;
+            document.getElementById('github-link').href =
+                `https://github.com/simpx/mockup.md/tree/main/examples/${exampleId}`;
+
+            // Load mockup source
+            const mockupUrl = `https://raw.githubusercontent.com/simpx/mockup.md/main/examples/${exampleId}/slide.mu`;
+            fetch(mockupUrl)
+                .then(response => {
+                    if (!response.ok) throw new Error('Failed to load');
+                    return response.text();
+                })
+                .then(text => {
+                    document.getElementById('mockup-loading').style.display = 'none';
+                    const sourceEl = document.getElementById('mockup-source');
+                    sourceEl.style.display = 'block';
+                    sourceEl.textContent = text;
+                })
+                .catch(err => {
+                    document.getElementById('mockup-loading').innerHTML =
+                        '<div class="error">Failed to load mockup source</div>';
+                });
+
+            // Initialize slide viewers for each AI
+            aiModels.forEach(ai => {
+                initSlideViewer(ai, exampleId, example.slides);
+            });
+        }
+
+        // Tab switching
+        document.querySelectorAll('.viewer-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.dataset.tab;
+
+                document.querySelectorAll('.viewer-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                document.querySelectorAll('.viewer-panel').forEach(p => p.classList.remove('active'));
+                document.getElementById('panel-' + tabId).classList.add('active');
+            });
+        });
+
+        // Slide viewer functionality
+        function initSlideViewer(ai, exampleId, totalSlides) {
+            const viewer = document.querySelector(`.slide-viewer[data-ai="${ai}"]`);
+            if (!viewer) return;
+
+            const display = viewer.querySelector('.slide-display');
+            const prevBtn = viewer.querySelector('.slide-prev');
+            const nextBtn = viewer.querySelector('.slide-next');
+            const counter = viewer.querySelector('.slide-counter');
+            const thumbsContainer = viewer.querySelector('.slide-thumbs');
+
+            let currentSlide = 1;
+            let loadedImages = {};
+            let hasImages = false;
+
+            // Generate thumbnail buttons
+            thumbsContainer.innerHTML = '';
+            for (let i = 1; i <= totalSlides; i++) {
+                const thumb = document.createElement('div');
+                thumb.className = 'thumb' + (i === 1 ? ' active' : '');
+                thumb.dataset.slide = i;
+                thumb.textContent = i;
+                thumb.addEventListener('click', () => {
+                    currentSlide = i;
+                    updateSlide();
+                });
+                thumbsContainer.appendChild(thumb);
+            }
+
+            // Try to load first image to check if images exist
+            const testImg = new Image();
+            const baseUrl = `${exampleId}/${ai}`;
+            testImg.onload = () => {
+                hasImages = true;
+                loadedImages[1] = testImg.src;
+                updateSlide();
+            };
+            testImg.onerror = () => {
+                // Images not available, show placeholder
+                hasImages = false;
+            };
+            testImg.src = `${baseUrl}/01.png`;
+
+            function updateSlide() {
+                counter.textContent = `${currentSlide} / ${totalSlides}`;
+                prevBtn.disabled = currentSlide === 1;
+                nextBtn.disabled = currentSlide === totalSlides;
+
+                // Update thumbnails
+                thumbsContainer.querySelectorAll('.thumb').forEach(t => {
+                    t.classList.toggle('active', parseInt(t.dataset.slide) === currentSlide);
+                });
+
+                if (hasImages) {
+                    const imgNum = String(currentSlide).padStart(2, '0');
+                    const imgUrl = `${baseUrl}/${imgNum}.png`;
+
+                    if (loadedImages[currentSlide]) {
+                        display.innerHTML = `<img src="${loadedImages[currentSlide]}" alt="Slide ${currentSlide}">`;
+                    } else {
+                        display.innerHTML = '<div class="loading">Loading...</div>';
+                        const img = new Image();
+                        img.onload = () => {
+                            loadedImages[currentSlide] = img.src;
+                            display.innerHTML = `<img src="${img.src}" alt="Slide ${currentSlide}">`;
+                        };
+                        img.onerror = () => {
+                            display.innerHTML = `<div class="slide-placeholder"><span>Image not found</span><small>${imgNum}.png</small></div>`;
+                        };
+                        img.src = imgUrl;
+                    }
+                }
+            }
+
+            prevBtn.addEventListener('click', () => {
+                if (currentSlide > 1) {
+                    currentSlide--;
+                    updateSlide();
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentSlide < totalSlides) {
+                    currentSlide++;
+                    updateSlide();
+                }
+            });
+
+            // Initial update
+            counter.textContent = `1 / ${totalSlides}`;
+        }
+    </script>
+</body>
+</html>
