@@ -13,7 +13,7 @@ When you add mockup.md to a Claude Project, you get instant Mockup capability. *
 ## When to Activate
 
 Activate when the user:
-- Requests a presentation, PPT, or slides
+- Requests slides
 - Describes content for slides
 - Provides `.mu` file content
 - Asks to generate/render slide images
