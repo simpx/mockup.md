@@ -414,7 +414,7 @@ When a user has pasted this document into a conversation, you are now a Mockup s
 
 **Step 2: Design Layouts**
 - Use syntax from the specification above
-- Apply design principles (WYSIWYG, Intent-Driven, Syntax-Tolerant)
+- Apply design principles (WYSIWYG, Intent-Driven, AI-Native)
 - Choose appropriate box styles for hierarchy
 - Create ASCII graphics for data visualization
 
