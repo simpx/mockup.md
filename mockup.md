@@ -1,10 +1,10 @@
 # Mockup Specification
 
-Mockup is an ASCII-based layout description language for presentations. Define your slide layouts using ASCII characters, and let the renderer transform them into polished visual output.
+Mockup is an ASCII-based layout description language for presentations. Define your slide layouts using ASCII characters, and let AI transform them into polished visual presentation images.
 
 ## Overview
 
-**The Problem**: When creating presentations, content ideation and visual design compete for attention. Mockup separates these concerns — users focus on content and layout intent, while the renderer handles aesthetics.
+**The Problem**: When creating presentations, content ideation and visual design compete for attention. Mockup separates these concerns — users focus on content and layout intent, while AI handles aesthetics and image generation.
 
 **Design Principles**:
 
@@ -270,7 +270,7 @@ Or specify LaTeX via annotation:
 
 ## Annotations
 
-Lines starting with `>` are annotations. They pass instructions to the renderer and do not appear in the final output.
+Lines starting with `>` are annotations. They pass instructions to AI for image generation and do not appear in the final output.
 
 ```
 ┌────────────────────────────────────────┐
@@ -348,14 +348,14 @@ theme: purple-gradient
 │                                                                │
 │      ┌──────────┐      ┌──────────┐      ┌──────────┐         │
 │      │   📝    │      │    🤖    │      │    🎨    │         │
-│      │ Draft①  │ ───→ │Generate② │ ───→ │ Render③ │         │
+│      │ Draft①  │ ───→ │Generate② │ ───→ │ Images③ │         │
 │      └──────────┘      └──────────┘      └──────────┘         │
 │                                                                │
 └────────────────────────────────────────────────────────────────┘
 
 > ① User describes requirements
 > ② AI generates mu draft
-> ③ AI renders final output
+> ③ AI generates final presentation images
 > Boxes appear sequentially
 ```
 

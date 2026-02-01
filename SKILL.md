@@ -1,6 +1,6 @@
-# Mockup Rendering Guide
+# Mockup Image Generation Guide
 
-This guide provides instructions for AI systems to generate and render Mockup (`.mu`) format presentations.
+This guide provides instructions for AI systems to generate Mockup (`.mu`) layouts and transform them into presentation images.
 
 **Prerequisite**: Read [mockup.md](./mockup.md) for the format specification.
 
@@ -40,9 +40,9 @@ Use this skill when the user requests to:
 - Use Emoji to enhance expressiveness
 - Reserve annotations for real photos and videos only
 
-## Rendering
+## Image Generation
 
-When rendering `.mu` to final visual output:
+When generating presentation images from `.mu` layouts:
 
 ### 1. Prioritize Intent Over Syntax
 
@@ -58,8 +58,8 @@ When rendering `.mu` to final visual output:
 
 ### 3. Transform ASCII to Graphics
 
-| ASCII | Rendered |
-|-------|----------|
+| ASCII | Generated Image |
+|-------|-----------------|
 | Bar charts | Polished bar charts |
 | Flow boxes | Refined flowcharts |
 | Emoji | Appropriate icons or illustrations |
@@ -68,7 +68,7 @@ When rendering `.mu` to final visual output:
 ### 4. Process Annotations
 
 - Apply colors, animations, and links
-- Exclude speaker notes from rendered output
+- Exclude speaker notes from generated images
 - Interpret natural language annotations
 
 ### 5. Maintain Style Consistency
