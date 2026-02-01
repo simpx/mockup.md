@@ -294,21 +294,15 @@
     <div class="viewer-container">
         <div class="viewer-card">
             <div class="viewer-tabs">
-                <button class="viewer-tab active" data-tab="mockup">Mockup</button>
-                <button class="viewer-tab" data-tab="gpt-5.2">GPT-5.2</button>
+                <button class="viewer-tab active" data-tab="gpt-5.2">GPT-5.2</button>
                 <button class="viewer-tab" data-tab="nanobanana">Nanobanana</button>
                 <button class="viewer-tab" data-tab="notebookllm">NotebookLLM</button>
+                <button class="viewer-tab" data-tab="mockup">Mockup</button>
             </div>
 
             <div class="viewer-content">
-                <!-- Mockup Source Tab -->
-                <div class="viewer-panel active" id="panel-mockup">
-                    <div class="loading" id="mockup-loading">Loading mockup source...</div>
-                    <pre class="mockup-source" id="mockup-source" style="display:none;"></pre>
-                </div>
-
-                <!-- AI Output Tabs -->
-                <div class="viewer-panel" id="panel-gpt-5.2">
+                <!-- AI Output Tabs (first to be default) -->
+                <div class="viewer-panel active" id="panel-gpt-5.2">
                     <div class="slide-viewer" data-ai="gpt-5.2">
                         <div class="slide-display">
                             <div class="slide-placeholder">
@@ -358,6 +352,20 @@
                         <div class="slide-thumbs"></div>
                     </div>
                 </div>
+
+                <!-- Mockup Source Tab -->
+                <div class="viewer-panel" id="panel-mockup">
+                    <div class="loading" id="mockup-loading">Loading mockup source...</div>
+                    <div class="mockup-viewer" id="mockup-viewer" style="display:none;">
+                        <pre class="mockup-source" id="mockup-source"></pre>
+                        <div class="slide-nav">
+                            <button class="slide-prev" id="mockup-prev" disabled>◀ Prev</button>
+                            <span class="slide-counter" id="mockup-counter">1 / 1</span>
+                            <button class="slide-next" id="mockup-next" disabled>Next ▶</button>
+                        </div>
+                        <div class="slide-thumbs" id="mockup-thumbs"></div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -403,6 +411,11 @@
 
         const aiModels = ['gpt-5.2', 'nanobanana', 'notebookllm'];
 
+        // Global current slide (shared across all tabs)
+        let currentSlide = 1;
+        let totalSlides = 1;
+        let mockupSlides = []; // Parsed mockup slides
+
         // Get example from URL
         const urlParams = new URLSearchParams(window.location.search);
         const exampleId = urlParams.get('example');
@@ -412,6 +425,8 @@
             document.getElementById('example-title').textContent = 'Example not found';
             document.getElementById('example-description').textContent = 'Please select an example from the home page.';
         } else {
+            totalSlides = example.slides;
+
             // Set page info
             document.getElementById('example-title').textContent = example.title;
             document.getElementById('example-description').textContent = example.description;
@@ -419,7 +434,7 @@
             document.getElementById('github-link').href =
                 `https://github.com/simpx/mockup.md/tree/main/examples/${exampleId}`;
 
-            // Load mockup source
+            // Load mockup source and parse into slides
             const mockupUrl = `https://raw.githubusercontent.com/simpx/mockup.md/main/examples/${exampleId}/slide.mu`;
             fetch(mockupUrl)
                 .then(response => {
@@ -428,9 +443,11 @@
                 })
                 .then(text => {
                     document.getElementById('mockup-loading').style.display = 'none';
-                    const sourceEl = document.getElementById('mockup-source');
-                    sourceEl.style.display = 'block';
-                    sourceEl.textContent = text;
+                    document.getElementById('mockup-viewer').style.display = 'block';
+
+                    // Parse slides - split by slide boundaries (┌────...────┐)
+                    mockupSlides = parseSlides(text);
+                    initMockupViewer();
                 })
                 .catch(err => {
                     document.getElementById('mockup-loading').innerHTML =
@@ -439,11 +456,117 @@
 
             // Initialize slide viewers for each AI
             aiModels.forEach(ai => {
-                initSlideViewer(ai, exampleId, example.slides);
+                initSlideViewer(ai, exampleId);
             });
         }
 
-        // Tab switching
+        // Parse mockup text into individual slides
+        function parseSlides(text) {
+            const slides = [];
+            const lines = text.split('\n');
+            let currentSlideLines = [];
+            let inSlide = false;
+            let frontMatter = '';
+            let inFrontMatter = false;
+
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i];
+
+                // Handle front matter
+                if (i === 0 && line.trim() === '---') {
+                    inFrontMatter = true;
+                    frontMatter += line + '\n';
+                    continue;
+                }
+                if (inFrontMatter) {
+                    frontMatter += line + '\n';
+                    if (line.trim() === '---') {
+                        inFrontMatter = false;
+                    }
+                    continue;
+                }
+
+                // Detect slide start (line starting with ┌)
+                if (line.trim().startsWith('┌')) {
+                    if (currentSlideLines.length > 0) {
+                        slides.push(currentSlideLines.join('\n'));
+                    }
+                    currentSlideLines = [line];
+                    inSlide = true;
+                } else if (inSlide) {
+                    currentSlideLines.push(line);
+                }
+            }
+
+            // Add last slide
+            if (currentSlideLines.length > 0) {
+                slides.push(currentSlideLines.join('\n'));
+            }
+
+            return slides;
+        }
+
+        // Initialize mockup viewer with pagination
+        function initMockupViewer() {
+            const sourceEl = document.getElementById('mockup-source');
+            const prevBtn = document.getElementById('mockup-prev');
+            const nextBtn = document.getElementById('mockup-next');
+            const counter = document.getElementById('mockup-counter');
+            const thumbsContainer = document.getElementById('mockup-thumbs');
+
+            // Generate thumbnail buttons
+            thumbsContainer.innerHTML = '';
+            for (let i = 1; i <= totalSlides; i++) {
+                const thumb = document.createElement('div');
+                thumb.className = 'thumb' + (i === currentSlide ? ' active' : '');
+                thumb.dataset.slide = i;
+                thumb.textContent = i;
+                thumb.addEventListener('click', () => {
+                    setCurrentSlide(i);
+                });
+                thumbsContainer.appendChild(thumb);
+            }
+
+            prevBtn.addEventListener('click', () => {
+                if (currentSlide > 1) {
+                    setCurrentSlide(currentSlide - 1);
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentSlide < totalSlides) {
+                    setCurrentSlide(currentSlide + 1);
+                }
+            });
+
+            updateMockupDisplay();
+        }
+
+        function updateMockupDisplay() {
+            const sourceEl = document.getElementById('mockup-source');
+            const prevBtn = document.getElementById('mockup-prev');
+            const nextBtn = document.getElementById('mockup-next');
+            const counter = document.getElementById('mockup-counter');
+            const thumbsContainer = document.getElementById('mockup-thumbs');
+
+            if (!sourceEl) return;
+
+            counter.textContent = `${currentSlide} / ${totalSlides}`;
+            prevBtn.disabled = currentSlide === 1;
+            nextBtn.disabled = currentSlide === totalSlides;
+
+            // Update thumbnails
+            thumbsContainer.querySelectorAll('.thumb').forEach(t => {
+                t.classList.toggle('active', parseInt(t.dataset.slide) === currentSlide);
+            });
+
+            // Show current slide
+            if (mockupSlides[currentSlide - 1]) {
+                sourceEl.textContent = mockupSlides[currentSlide - 1];
+            }
+        }
+
+        // Tab switching - sync slide position
         document.querySelectorAll('.viewer-tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 const tabId = tab.dataset.tab;
@@ -453,11 +576,33 @@
 
                 document.querySelectorAll('.viewer-panel').forEach(p => p.classList.remove('active'));
                 document.getElementById('panel-' + tabId).classList.add('active');
+
+                // Update all displays to current slide
+                updateAllDisplays();
             });
         });
 
+        // Global slide setter - updates all viewers
+        function setCurrentSlide(slideNum) {
+            currentSlide = slideNum;
+            updateAllDisplays();
+        }
+
+        function updateAllDisplays() {
+            // Update mockup display
+            updateMockupDisplay();
+
+            // Update all AI viewers
+            aiModels.forEach(ai => {
+                updateAIViewer(ai);
+            });
+        }
+
+        // AI viewer state storage
+        const aiViewerState = {};
+
         // Slide viewer functionality
-        function initSlideViewer(ai, exampleId, totalSlides) {
+        function initSlideViewer(ai, exampleId) {
             const viewer = document.querySelector(`.slide-viewer[data-ai="${ai}"]`);
             if (!viewer) return;
 
@@ -467,85 +612,93 @@
             const counter = viewer.querySelector('.slide-counter');
             const thumbsContainer = viewer.querySelector('.slide-thumbs');
 
-            let currentSlide = 1;
-            let loadedImages = {};
-            let hasImages = false;
+            // Store state
+            aiViewerState[ai] = {
+                display,
+                prevBtn,
+                nextBtn,
+                counter,
+                thumbsContainer,
+                loadedImages: {},
+                hasImages: false,
+                baseUrl: `${exampleId}/${ai}`
+            };
 
             // Generate thumbnail buttons
             thumbsContainer.innerHTML = '';
             for (let i = 1; i <= totalSlides; i++) {
                 const thumb = document.createElement('div');
-                thumb.className = 'thumb' + (i === 1 ? ' active' : '');
+                thumb.className = 'thumb' + (i === currentSlide ? ' active' : '');
                 thumb.dataset.slide = i;
                 thumb.textContent = i;
                 thumb.addEventListener('click', () => {
-                    currentSlide = i;
-                    updateSlide();
+                    setCurrentSlide(i);
                 });
                 thumbsContainer.appendChild(thumb);
             }
 
             // Try to load first image to check if images exist
             const testImg = new Image();
-            const baseUrl = `${exampleId}/${ai}`;
             testImg.onload = () => {
-                hasImages = true;
-                loadedImages[1] = testImg.src;
-                updateSlide();
+                aiViewerState[ai].hasImages = true;
+                aiViewerState[ai].loadedImages[1] = testImg.src;
+                updateAIViewer(ai);
             };
             testImg.onerror = () => {
-                // Images not available, show placeholder
-                hasImages = false;
+                aiViewerState[ai].hasImages = false;
             };
-            testImg.src = `${baseUrl}/01.png`;
-
-            function updateSlide() {
-                counter.textContent = `${currentSlide} / ${totalSlides}`;
-                prevBtn.disabled = currentSlide === 1;
-                nextBtn.disabled = currentSlide === totalSlides;
-
-                // Update thumbnails
-                thumbsContainer.querySelectorAll('.thumb').forEach(t => {
-                    t.classList.toggle('active', parseInt(t.dataset.slide) === currentSlide);
-                });
-
-                if (hasImages) {
-                    const imgNum = String(currentSlide).padStart(2, '0');
-                    const imgUrl = `${baseUrl}/${imgNum}.png`;
-
-                    if (loadedImages[currentSlide]) {
-                        display.innerHTML = `<img src="${loadedImages[currentSlide]}" alt="Slide ${currentSlide}">`;
-                    } else {
-                        display.innerHTML = '<div class="loading">Loading...</div>';
-                        const img = new Image();
-                        img.onload = () => {
-                            loadedImages[currentSlide] = img.src;
-                            display.innerHTML = `<img src="${img.src}" alt="Slide ${currentSlide}">`;
-                        };
-                        img.onerror = () => {
-                            display.innerHTML = `<div class="slide-placeholder"><span>Image not found</span><small>${imgNum}.png</small></div>`;
-                        };
-                        img.src = imgUrl;
-                    }
-                }
-            }
+            testImg.src = `${aiViewerState[ai].baseUrl}/01.png`;
 
             prevBtn.addEventListener('click', () => {
                 if (currentSlide > 1) {
-                    currentSlide--;
-                    updateSlide();
+                    setCurrentSlide(currentSlide - 1);
                 }
             });
 
             nextBtn.addEventListener('click', () => {
                 if (currentSlide < totalSlides) {
-                    currentSlide++;
-                    updateSlide();
+                    setCurrentSlide(currentSlide + 1);
                 }
             });
 
             // Initial update
             counter.textContent = `1 / ${totalSlides}`;
+        }
+
+        function updateAIViewer(ai) {
+            const state = aiViewerState[ai];
+            if (!state) return;
+
+            const { display, prevBtn, nextBtn, counter, thumbsContainer, loadedImages, hasImages, baseUrl } = state;
+
+            counter.textContent = `${currentSlide} / ${totalSlides}`;
+            prevBtn.disabled = currentSlide === 1;
+            nextBtn.disabled = currentSlide === totalSlides;
+
+            // Update thumbnails
+            thumbsContainer.querySelectorAll('.thumb').forEach(t => {
+                t.classList.toggle('active', parseInt(t.dataset.slide) === currentSlide);
+            });
+
+            if (hasImages) {
+                const imgNum = String(currentSlide).padStart(2, '0');
+                const imgUrl = `${baseUrl}/${imgNum}.png`;
+
+                if (loadedImages[currentSlide]) {
+                    display.innerHTML = `<img src="${loadedImages[currentSlide]}" alt="Slide ${currentSlide}">`;
+                } else {
+                    display.innerHTML = '<div class="loading">Loading...</div>';
+                    const img = new Image();
+                    img.onload = () => {
+                        state.loadedImages[currentSlide] = img.src;
+                        display.innerHTML = `<img src="${img.src}" alt="Slide ${currentSlide}">`;
+                    };
+                    img.onerror = () => {
+                        display.innerHTML = `<div class="slide-placeholder"><span>Image not found</span><small>${imgNum}.png</small></div>`;
+                    };
+                    img.src = imgUrl;
+                }
+            }
         }
     </script>
 </body>

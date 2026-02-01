@@ -33,62 +33,21 @@
 
             <div class="demo-container">
                 <div class="demo-tabs">
-                    <button class="demo-tab active" data-tab="mockup">Mockup</button>
-                    <button class="demo-tab" data-tab="gpt-5.2">GPT-5.2</button>
+                    <button class="demo-tab active" data-tab="gpt-5.2">GPT-5.2</button>
                     <button class="demo-tab" data-tab="nanobanana">Nanobanana</button>
                     <button class="demo-tab" data-tab="notebookllm">NotebookLLM</button>
+                    <button class="demo-tab" data-tab="mockup">Mockup</button>
                 </div>
 
                 <div class="demo-content">
-                    <!-- Mockup Source Tab -->
-                    <div class="demo-panel active" id="panel-mockup">
-                        <pre class="mockup-source"><code>┌────────────────────────────────────────────────────────────────┐
-│                                                                │
-│                         ┌─┐                                    │
-│                         │M│ ockup                              │
-│                         └─┘                                    │
-│                                                                │
-│                   The Markdown for Slides                      │
-│                                                                │
-│                          🚀                                    │
-│                                                                │
-└────────────────────────────────────────────────────────────────┘
-
-> Cover slide
-
-┌────────────────────────────────────────────────────────────────┐
-│                                                                │
-│                        **Workflow**                            │
-│                                                                │
-│      ┌──────────┐      ┌──────────┐      ┌──────────┐         │
-│      │   📝    │      │    🤖    │      │    🎨    │         │
-│      │ Draft①  │ ───→ │Generate② │ ───→ │ Images③ │         │
-│      └──────────┘      └──────────┘      └──────────┘         │
-│                                                                │
-└────────────────────────────────────────────────────────────────┘
-
-> ① User describes requirements
-> ② AI generates mu draft
-> ③ AI generates final slide images</code></pre>
-                    </div>
-
-                    <!-- AI Output Tabs -->
-                    <div class="demo-panel" id="panel-gpt-5.2">
+                    <!-- AI Output Tabs (first to be default) -->
+                    <div class="demo-panel active" id="panel-gpt-5.2">
                         <div class="slide-viewer">
                             <div class="slide-display">
                                 <div class="slide-placeholder" data-ai="gpt-5.2">
                                     <span>GPT-5.2 Output</span>
                                     <small>Coming Soon</small>
                                 </div>
-                            </div>
-                            <div class="slide-nav">
-                                <button class="slide-prev" disabled>◀ Prev</button>
-                                <span class="slide-counter">1 / 2</span>
-                                <button class="slide-next">Next ▶</button>
-                            </div>
-                            <div class="slide-thumbs">
-                                <div class="thumb active" data-slide="1">1</div>
-                                <div class="thumb" data-slide="2">2</div>
                             </div>
                         </div>
                     </div>
@@ -101,15 +60,6 @@
                                     <small>Coming Soon</small>
                                 </div>
                             </div>
-                            <div class="slide-nav">
-                                <button class="slide-prev" disabled>◀ Prev</button>
-                                <span class="slide-counter">1 / 2</span>
-                                <button class="slide-next">Next ▶</button>
-                            </div>
-                            <div class="slide-thumbs">
-                                <div class="thumb active" data-slide="1">1</div>
-                                <div class="thumb" data-slide="2">2</div>
-                            </div>
                         </div>
                     </div>
 
@@ -121,16 +71,26 @@
                                     <small>Coming Soon</small>
                                 </div>
                             </div>
-                            <div class="slide-nav">
-                                <button class="slide-prev" disabled>◀ Prev</button>
-                                <span class="slide-counter">1 / 2</span>
-                                <button class="slide-next">Next ▶</button>
-                            </div>
-                            <div class="slide-thumbs">
-                                <div class="thumb active" data-slide="1">1</div>
-                                <div class="thumb" data-slide="2">2</div>
-                            </div>
                         </div>
+                    </div>
+
+                    <!-- Mockup Source Tab -->
+                    <div class="demo-panel" id="panel-mockup">
+                        <pre class="mockup-source"><code>┌────────────────────────────────────────────────────────────────┐
+│                                                                │
+│                         ┌─┐                                    │
+│                         │M│ ockup                              │
+│                         └─┘                                    │
+│                   The Markdown for Slides                      │
+│                                                                │
+│      ┌──────────┐      ┌──────────┐      ┌──────────┐         │
+│      │   📝    │      │    🤖    │      │    🎨    │         │
+│      │ Draft   │ ───→ │ Generate │ ───→ │  Image  │         │
+│      └──────────┘      └──────────┘      └──────────┘         │
+│                                                                │
+└────────────────────────────────────────────────────────────────┘
+
+> Cover slide with workflow</code></pre>
                     </div>
                 </div>
             </div>
@@ -271,46 +231,6 @@ cp -rL mockup.md/.claude/skills/mockup ~/.claude/skills/</pre>
                 // Update active panel
                 document.querySelectorAll('.demo-panel').forEach(p => p.classList.remove('active'));
                 document.getElementById('panel-' + tabId).classList.add('active');
-            });
-        });
-
-        // Slide Navigation (for when images are added)
-        document.querySelectorAll('.slide-viewer').forEach(viewer => {
-            const prevBtn = viewer.querySelector('.slide-prev');
-            const nextBtn = viewer.querySelector('.slide-next');
-            const counter = viewer.querySelector('.slide-counter');
-            const thumbs = viewer.querySelectorAll('.thumb');
-            let currentSlide = 1;
-            const totalSlides = 2;
-
-            function updateSlide() {
-                counter.textContent = currentSlide + ' / ' + totalSlides;
-                prevBtn.disabled = currentSlide === 1;
-                nextBtn.disabled = currentSlide === totalSlides;
-                thumbs.forEach(t => {
-                    t.classList.toggle('active', parseInt(t.dataset.slide) === currentSlide);
-                });
-            }
-
-            prevBtn.addEventListener('click', () => {
-                if (currentSlide > 1) {
-                    currentSlide--;
-                    updateSlide();
-                }
-            });
-
-            nextBtn.addEventListener('click', () => {
-                if (currentSlide < totalSlides) {
-                    currentSlide++;
-                    updateSlide();
-                }
-            });
-
-            thumbs.forEach(thumb => {
-                thumb.addEventListener('click', () => {
-                    currentSlide = parseInt(thumb.dataset.slide);
-                    updateSlide();
-                });
             });
         });
     </script>
