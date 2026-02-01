@@ -67,10 +67,10 @@ Annotations (lines starting with >):
 ## Examples
 
 Reference `examples/` directory for complete samples:
-- `intro/` - Product introduction
-- `tech-rfc/` - Technical RFC
-- `thesis-defense/` - Thesis defense
-- `mapreduce/` - Classic paper slides
+- `00-mockup-intro/` - mockup.md self-introduction
+- `01-airbnb-pitch-deck/` - Classic 2009 startup pitch deck
+- `02-raft-consensus/` - Distributed systems paper (Raft)
+- `04-spanner-distributed-db/` - Distributed database paper (Spanner)
 
 ---
 

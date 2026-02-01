@@ -1,8 +1,6 @@
-# mockup.md <sub>v0.1.0</sub>
+# 📊 mockup.md
 
 **The Markdown for slides.**
-
-Sketch ideas and layout. AI does the rest.
 
 ```mu
 ┌────────────────────────────────────────────────────────────────┐
@@ -50,23 +48,14 @@ For one-time use with any AI (Claude, ChatGPT, Gemini, etc.):
 
 The AI will understand both tasks from mockup.md's built-in instructions.
 
-### Option 2: Claude Projects
-
-For ongoing use in Claude web:
-
-1. Create a new Claude Project
-2. Add [mockup.md](./mockup.md) to Project Knowledge
-3. Start chatting:
-   - "Create slides about [topic]"
-   - Or paste `.mu` files for rendering
-
-### Option 3: Claude Code CLI
+### Option 2: Claude Code CLI
 
 For terminal users:
 
 ```bash
-git clone https://github.com/simpx/mockup.md.git
-cp -rL mockup.md/.claude/skills/mockup ~/.claude/skills/
+mkdir -p ~/.claude/skills/mockup
+curl -o ~/.claude/skills/mockup/SKILL.md https://raw.githubusercontent.com/simpx/mockup.md/main/.claude/skills/mockup/SKILL.md
+curl -o ~/.claude/skills/mockup/mockup.md https://raw.githubusercontent.com/simpx/mockup.md/main/mockup.md
 ```
 
 Claude Code will auto-recognize `.mu` files and mockup-related requests.
