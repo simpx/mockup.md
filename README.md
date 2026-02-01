@@ -74,9 +74,9 @@ See [mockup.md](./mockup.md) for complete syntax reference and examples.
 | [`00-mockup-intro`](./examples/00-mockup-intro/) | mockup.md self-introduction |
 | [`01-airbnb-pitch-deck`](./examples/01-airbnb-pitch-deck/) | Classic 2009 startup pitch deck |
 | [`02-raft-consensus`](./examples/02-raft-consensus/) | Distributed systems paper |
-| [`03-bert-nlp`](./examples/03-bert-nlp/) | NLP/AI paper |
+| [`03-transformer`](./examples/03-transformer/) | Attention is All You Need (Google 2017) |
 | [`04-spanner-distributed-db`](./examples/04-spanner-distributed-db/) | Distributed database paper |
-| [`05-dynamo-kv-store`](./examples/05-dynamo-kv-store/) | Distributed KV store paper |
+| [`05-gfs`](./examples/05-gfs/) | Google File System (SOSP 2003) |
 
 See [examples/README.md](./examples/README.md) for details.
 

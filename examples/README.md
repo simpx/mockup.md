@@ -9,9 +9,9 @@ This directory contains examples to demonstrate mockup.md.
 | 00 | [Mockup Intro](./00-mockup-intro/) | Product Intro | mockup.md self-introduction |
 | 01 | [Airbnb Pitch Deck](./01-airbnb-pitch-deck/) | Startup/Funding | Classic 2009 pitch deck |
 | 02 | [Raft Consensus](./02-raft-consensus/) | Distributed Systems | Diego Ongaro (UIUC 2016) |
-| 03 | [BERT](./03-bert-nlp/) | NLP/AI | Jacob Devlin |
+| 03 | [Transformer](./03-transformer/) | NLP/AI | Attention is All You Need (Google 2017) |
 | 04 | [Spanner](./04-spanner-distributed-db/) | Distributed Database | Wilson Hsieh (OSDI 2012) |
-| 05 | [Dynamo](./05-dynamo-kv-store/) | Distributed KV Store | Amazon Dynamo paper |
+| 05 | [GFS](./05-gfs/) | Distributed Storage | Google File System (SOSP 2003) |
 
 ## Directory Structure
 
@@ -68,6 +68,6 @@ AI renders slides
 
 - **Airbnb**: https://sites.ced.ncsu.edu/design-and-pitch/wp-content/uploads/sites/13/2020/05/Pitch-Example-Air-BnB-PDF.pdf
 - **Raft**: https://raft.github.io/slides/uiuc2016.pdf
-- **BERT**: https://www.csie.ntu.edu.tw/~miulab/s107-adl/doc/190409_BERT.pdf
+- **Transformer**: https://web.stanford.edu/~jurafsky/slp3/slides/transformer24aug.pdf (trimmed to 24 pages)
 - **Spanner**: https://www.cse.uoi.gr/~magoutis/L05/docs/fall17/slides/corbett_osdi12_slides.pdf
-- **Dynamo**: https://cs.uwaterloo.ca/~tozsu/courses/CS848/W15/presentations/JeffAvery-Dynamo.pdf
+- **GFS**: https://people.csail.mit.edu/matei/courses/2015/6.S897/slides/gfs.pdf
