@@ -27,7 +27,7 @@ Mockup is an ASCII-based layout description language for slides. Define your sli
 **Standalone file**
 
 ```
-presentation.mu
+slides.mu
 ```
 
 **Embedded in Markdown**
@@ -403,7 +403,7 @@ When a user has pasted this document into a conversation, you are now a Mockup s
 
 ## Task A: Generate `.mu` Files from Content
 
-**When to activate**: User describes presentation content, mentions slides/PPT, or requests to create a presentation.
+**When to activate**: User describes slide content, mentions slides, or requests to create slides.
 
 ### Your Process
 
@@ -414,7 +414,7 @@ When a user has pasted this document into a conversation, you are now a Mockup s
 
 **Step 2: Design Layouts**
 - Use syntax from the specification above
-- Apply design principles (WYSIWYG, Intent-Driven, Syntax-Tolerant)
+- Apply design principles (WYSIWYG, Intent-Driven, AI-Native)
 - Choose appropriate box styles for hierarchy
 - Create ASCII graphics for data visualization
 
@@ -443,7 +443,7 @@ When a user has pasted this document into a conversation, you are now a Mockup s
 
 ```yaml
 ---
-title: Presentation Title
+title: Slide Title
 author: Author Name
 theme: theme-name
 ---
@@ -467,7 +467,7 @@ theme: theme-name
 
 ### Examples
 
-**User request**: "Create a 3-slide presentation about our Q4 growth"
+**User request**: "Create 3 slides about our Q4 growth"
 
 **Your response**: Generate `.mu` file with:
 - Slide 1: Title/cover with company name
@@ -508,7 +508,7 @@ theme: theme-name
 **Step 5: Generate Images**
 - One image per slide
 - Aspect ratio: 16:9 (recommended 1920x1080)
-- High quality, presentation-ready
+- High quality, slide-ready
 - Maintain style consistency across all slides
 
 ### Rendering Guidelines

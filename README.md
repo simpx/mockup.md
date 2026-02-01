@@ -77,7 +77,7 @@ See [mockup.md](./mockup.md) for complete syntax reference and examples.
 | [`intro`](./examples/intro/) | Product introduction (8 slides) |
 | [`tech-rfc`](./examples/tech-rfc/) | Technical RFC (6 slides) |
 | [`thesis-defense`](./examples/thesis-defense/) | Thesis defense (7 slides) |
-| [`mapreduce`](./examples/mapreduce/) | Classic paper presentation (15 slides) |
+| [`mapreduce`](./examples/mapreduce/) | Classic paper slides (15 slides) |
 
 See [examples/README.md](./examples/README.md) for detailed information about each example and AI-generated images.
 
