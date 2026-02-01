@@ -397,6 +397,7 @@
         let currentSlide = 1;
         let totalSlides = 1;
         let mockupSlides = []; // Parsed mockup slides
+        const aiViewerState = {}; // AI viewer state storage
 
         // Get example from URL
         const urlParams = new URLSearchParams(window.location.search);
@@ -579,9 +580,6 @@
                 updateAIViewer(ai);
             });
         }
-
-        // AI viewer state storage
-        const aiViewerState = {};
 
         // Slide viewer functionality
         function initSlideViewer(ai, exampleId) {
