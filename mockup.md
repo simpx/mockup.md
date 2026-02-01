@@ -1,4 +1,4 @@
-# Mockup Specification
+# Mockup Specification <sub>v0.1.0</sub>
 
 Mockup is an ASCII-based layout description language for slides. Define your slide layouts using ASCII characters, and let AI transform them into polished visual slide images.
 

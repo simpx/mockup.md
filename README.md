@@ -1,4 +1,4 @@
-# mockup.md
+# mockup.md <sub>v0.1.0</sub>
 
 **The Markdown for slides.**
 
@@ -74,12 +74,14 @@ See [mockup.md](./mockup.md) for complete syntax reference and examples.
 
 | Example | Description |
 |---------|-------------|
-| [`intro`](./examples/intro/) | Product introduction (8 slides) |
-| [`tech-rfc`](./examples/tech-rfc/) | Technical RFC (6 slides) |
-| [`thesis-defense`](./examples/thesis-defense/) | Thesis defense (7 slides) |
-| [`mapreduce`](./examples/mapreduce/) | Classic paper slides (15 slides) |
+| [`00-mockup-intro`](./examples/00-mockup-intro/) | mockup.md self-introduction |
+| [`01-airbnb-pitch-deck`](./examples/01-airbnb-pitch-deck/) | Classic 2009 startup pitch deck |
+| [`02-raft-consensus`](./examples/02-raft-consensus/) | Distributed systems paper |
+| [`03-bert-nlp`](./examples/03-bert-nlp/) | NLP/AI paper |
+| [`04-spanner-distributed-db`](./examples/04-spanner-distributed-db/) | Distributed database paper |
+| [`05-dynamo-kv-store`](./examples/05-dynamo-kv-store/) | Distributed KV store paper |
 
-See [examples/README.md](./examples/README.md) for detailed information about each example and AI-generated images.
+See [examples/README.md](./examples/README.md) for details.
 
 ## License
 
