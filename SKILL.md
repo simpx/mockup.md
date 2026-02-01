@@ -1,94 +1,54 @@
-# Mockup Image Generation Guide
+# Mockup Skill for Claude Projects
 
-This guide provides instructions for AI systems to generate Mockup (`.mu`) layouts and transform them into presentation images.
-
-**Prerequisite**: Read [mockup.md](./mockup.md) for the format specification.
+> **Note**: This file is optimized for Claude Projects. For one-time use, simply copy [mockup.md](./mockup.md) into any AI chat.
 
 ## When to Activate
 
-Use this skill when the user requests to:
-
+Activate this skill when the user requests to:
 - Generate a presentation, PPT, or slides
 - Create a `.mu` file
-- Embed slides in Markdown
-- Create an ASCII-based presentation
+- Generate images from `.mu` content
+
+## Core Instructions
+
+**Read [mockup.md](./mockup.md) for the complete format specification.**
+
+This file contains:
+- Full syntax reference (boxes, layouts, graphics, annotations)
+- Design principles (WYSIWYG, Intent-Driven, Syntax-Tolerant)
+- Usage instructions for both tasks:
+  - Task A: Generate `.mu` from content descriptions
+  - Task B: Generate images from `.mu` files
+
+## Key Reminders for Claude
+
+### When Generating `.mu` Files:
+- Use the outermost box to define each slide
+- Recommended width: 60–72 characters (16:9 ratio)
+- Position = alignment (left/center/right)
+- Prefer ASCII graphics over annotations
+- Add metadata (title, author, theme) when appropriate
+
+### When Generating Images:
+- Preserve proportions from ASCII layout
+- Box hierarchy: `╔═╗` (emphasis) > `┌─┐` (standard) > `┌╌┐` (secondary)
+- Transform ASCII charts into polished graphics
+- Process annotations for styling (colors, animations)
+- Output: 16:9 aspect ratio, high resolution (1920x1080)
+- Maintain consistent style throughout
+
+## Examples
+
+See [examples/](./examples) directory for reference:
+- `intro/` - Product introduction
+- `tech-rfc/` - Technical RFC
+- `thesis-defense/` - Academic presentation
+- `mapreduce/` - Paper presentation
 
 ## Output Formats
 
 | Context | Output |
 |---------|--------|
-| Standalone | `.mu` file |
-| Embedded | ` ```mu ` code block in Markdown |
-
-## Generation
-
-### 1. Analyze Requirements
-
-- What is the presentation about?
-- How many slides are needed?
-- What style or theme is appropriate?
-
-### 2. Follow the Specification
-
-- Adhere to [mockup.md](./mockup.md) format
-- Wrap each slide in an outermost box
-- Keep layouts clear with explicit intent
-
-### 3. Maximize ASCII Graphics
-
-- Use ASCII art for charts, flowcharts, and UI mockups
-- Use Emoji to enhance expressiveness
-- Reserve annotations for real photos and videos only
-
-## Image Generation
-
-When generating presentation images from `.mu` layouts:
-
-### 1. Prioritize Intent Over Syntax
-
-- Auto-correct misaligned boxes
-- Interpret similar characters semantically
-- Focus on reconstructing layout intent
-
-### 2. Preserve Proportions
-
-- Maintain box-to-slide size ratios
-- Preserve column width ratios
-- Keep relative element positions
-
-### 3. Transform ASCII to Graphics
-
-| ASCII | Generated Image |
-|-------|-----------------|
-| Bar charts | Polished bar charts |
-| Flow boxes | Refined flowcharts |
-| Emoji | Appropriate icons or illustrations |
-| UI sketches | Clean interface mockups |
-
-### 4. Process Annotations
-
-- Apply colors, animations, and links
-- Exclude speaker notes from generated images
-- Interpret natural language annotations
-
-### 5. Maintain Style Consistency
-
-- Select color scheme based on theme
-- Maintain consistent fonts, spacing, and border-radius
-
-### 6. Handle Placeholders
-
-- `replace with: xxx.jpg` → Reserve area for actual image
-- Use placeholder images when assets are unavailable
-- Placeholder size is determined by ASCII box dimensions
-
-## Examples
-
-See the [examples/](./examples) directory:
-
-| File | Description |
-|------|-------------|
-| `intro.mu` | Product introduction |
-| `tech-rfc.mu` | Technical RFC |
-| `thesis-defense.mu` | Academic thesis defense |
-| `mapreduce.mu` | Classic paper presentation |
+| Standalone request | `.mu` file |
+| Embedded in Markdown | ` ```mu ` code block |
+| Image generation | High-quality PNG/JPEG images |

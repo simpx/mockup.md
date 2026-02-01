@@ -384,3 +384,83 @@ Common Emoji
 🔗 💡 🎯 🚀 💰 🛡️
 🙏 👍 👋
 ```
+
+---
+
+# How to Use This Document
+
+This document serves both as a **format specification** and a **prompt for AI systems**. You can use it in two ways:
+
+## Option 1: Copy-Paste for One-Time Use
+
+Copy this entire document and paste it into any AI chat (Claude, ChatGPT, Gemini, etc.), then:
+
+### Task A: Generate `.mu` from Content
+
+**When you want to create a presentation layout from content:**
+
+After pasting this document, tell the AI:
+```
+I need a presentation about [topic].
+Include: [key points]
+Target audience: [audience]
+Number of slides: [number]
+```
+
+**The AI will:**
+1. Analyze your requirements
+2. Choose appropriate layouts from the syntax above
+3. Generate a complete `.mu` file with ASCII layouts
+4. Include metadata (title, author, theme)
+5. Add annotations where needed
+
+**Example request:**
+```
+I need a 5-slide presentation about our new mobile app.
+Include: problem, solution, features, roadmap, and call-to-action.
+Target audience: investors.
+```
+
+### Task B: Generate Images from `.mu`
+
+**When you have a `.mu` file and want presentation images:**
+
+After pasting this document, tell the AI:
+```
+Generate presentation images from this .mu file:
+
+[paste your .mu file content here]
+```
+
+**The AI will:**
+1. Parse the `.mu` file structure
+2. Interpret box positions and sizes (WYSIWYG principle)
+3. Transform ASCII graphics into polished visuals
+4. Apply annotations (colors, animations, etc.)
+5. Generate high-quality images (16:9, 1920x1080)
+6. Maintain style consistency
+
+**Image generation guidelines:**
+- Preserve proportions: box size ratios = element size ratios
+- Text alignment: left/center/right based on ASCII position
+- Box hierarchy: double-line `╔═╗` = emphasis, single-line `┌─┐` = standard
+- ASCII charts → professional graphics (bars, lines, flows)
+- Emoji → icons or keep as-is depending on theme
+- Annotations control styling but don't appear in output
+
+## Option 2: Add to Claude Project
+
+For ongoing use:
+1. Add this document to your Claude Project knowledge
+2. Claude will automatically understand both tasks
+3. Simply describe your presentation needs or provide `.mu` files
+
+## Examples
+
+See the `examples/` directory for complete presentations:
+- `intro/` - Product introduction (8 slides)
+- `tech-rfc/` - Technical RFC (6 slides)
+- `thesis-defense/` - Academic presentation (7 slides)
+- `mapreduce/` - Paper presentation (15 slides)
+
+Each example shows how to use syntax elements in real presentations.

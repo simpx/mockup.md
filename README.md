@@ -35,74 +35,66 @@ This defines a slide with a centered title and two connected boxes.
 
 | File | Description |
 |------|-------------|
-| [mockup.md](./mockup.md) | Format specification |
-| [SKILL.md](./SKILL.md) | Rendering guide for AI |
-| [examples/](./examples) | Example files |
+| [mockup.md](./mockup.md) | Format specification & usage guide |
+| [SKILL.md](./SKILL.md) | Claude Project optimization |
+| [examples/](./examples) | Example presentations |
 
 ## Getting Started
 
-1. Read [mockup.md](./mockup.md) for the format specification
-2. Add [SKILL.md](./SKILL.md) to your Claude Project or context
-3. Describe the presentation you need
-4. Claude generates `.mu` → You refine → Ask Claude to generate final presentation images
+**Quick Start**: Copy [mockup.md](./mockup.md) and paste into any AI chat, then describe your presentation or provide a `.mu` file.
+
+**For ongoing use**: Add [mockup.md](./mockup.md) and optionally [SKILL.md](./SKILL.md) to your Claude Project knowledge.
 
 ## Usage
 
-### Using Mockup with Claude
+### Option 1: Copy-Paste (Any AI)
 
-**Option 1: Claude Projects (Recommended)**
+**Step 1**: Copy the entire [mockup.md](./mockup.md) file
+
+**Step 2**: Paste into any AI chat (Claude, ChatGPT, Gemini, etc.)
+
+**Step 3**: Choose your task:
+
+**Task A - Generate `.mu` from content:**
+```
+I need a presentation about [topic].
+Include: [key points]
+Target audience: [audience]
+```
+
+**Task B - Generate images from `.mu`:**
+```
+Generate presentation images from this .mu file:
+
+[paste your .mu content]
+```
+
+The mockup.md file contains both the format specification and usage instructions.
+
+### Option 2: Claude Projects (Recommended for Ongoing Use)
 
 1. Create a new Claude Project
-2. Add `SKILL.md` to your project knowledge
-3. Start a conversation:
-   ```
-   Help me create a presentation about [your topic]
-   ```
-4. Claude will generate a `.mu` file with ASCII layout
-5. Review and iterate on the layout
-6. Ask Claude to generate the final presentation images:
-   ```
-   Now generate presentation images based on this .mu file
-   ```
+2. Add `mockup.md` (required) and optionally `SKILL.md` (optimization) to your project knowledge
+3. Start conversations and simply:
+   - Describe your presentation needs, or
+   - Provide `.mu` files for image generation
 
-**Option 2: Direct Chat**
+Claude will automatically understand both tasks from the mockup.md file.
 
-1. In any Claude conversation, attach or paste the content of `SKILL.md`
-2. Describe your presentation needs
-3. Claude will generate the `.mu` layout
-4. Request image generation for the final output
-
-**Workflow Example**
-
-```
-You: I need a 5-slide presentation about our Q4 product roadmap.
-     Include: overview, timeline, key features, team allocation, and Q&A.
-
-Claude: [Generates .mu file with ASCII layout]
-
-You: Make the timeline more visual, use arrows to show dependencies.
-
-Claude: [Updates .mu file]
-
-You: Perfect! Now generate the presentation images.
-
-Claude: [Generates images for each slide]
-```
-
-### Using Mockup with VS Code
+### Option 3: VS Code
 
 > 🚧 **Coming Soon**: VS Code extension for Mockup syntax highlighting and preview.
 >
 > Planned features:
 > - Syntax highlighting for `.mu` files
 > - Live preview panel
-> - AI-powered generation and rendering via Claude integration
+> - AI-powered generation via Claude integration
 > - Export to common formats (PDF, PNG, PowerPoint)
 
-For now, you can:
+For now:
 1. Create `.mu` files in VS Code with plain text editing
-2. Use the ASCII box-drawing characters (see [mockup.md](./mockup.md))
-3. Copy the content to Claude for image generation
+2. Use ASCII box-drawing characters (see [mockup.md](./mockup.md) Quick Reference)
+3. Copy mockup.md into AI chat for generation/rendering
 
 ## Examples
 
