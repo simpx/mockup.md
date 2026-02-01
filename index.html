@@ -13,36 +13,127 @@
             <p class="tagline">The Markdown for Slides</p>
             <div class="buttons">
                 <a href="https://github.com/simpx/mockup.md" class="btn btn-primary">View on GitHub</a>
-                <a href="#examples" class="btn btn-secondary">See Examples</a>
+                <a href="#demo" class="btn btn-secondary">See Demo</a>
             </div>
         </div>
     </header>
 
-    <section class="workflow">
-        <div class="container">
-            <pre class="ascii-art">
-┌────────────────────────────────────────────────────────────────┐
-│                                                                │
-│   ┌────────────┐      ┌────────────┐      ┌────────────┐      │
-│   │            │      │            │      │            │      │
-│   │  💭 Your   │  ──→ │  📝 .mu    │  ──→ │  🎨 Slide  │      │
-│   │   ideas    │      │   file     │      │   images   │      │
-│   │            │      │            │      │            │      │
-│   └────────────┘      └────────────┘      └────────────┘      │
-│                                                                │
-│        Describe      AI generates      AI renders             │
-│        content       ASCII layout      polished slides         │
-│                                                                │
-└────────────────────────────────────────────────────────────────┘
-            </pre>
-        </div>
-    </section>
-
     <section class="problem">
         <div class="container">
             <h2>The Problem</h2>
-            <p>Making slides is painful. Traditional tools make you juggle content, layout, and styling — exhausting. AI-generated slides give random, inconsistent results — frustrating. AI-generated formats (Mermaid, DrawIO) aren't visual enough, hard to edit and version.</p>
+            <p>Making slides is painful. Traditional tools make you juggle content, layout, and styling — exhausting. AI-generated slides give random, inconsistent results — frustrating.</p>
             <p class="highlight"><strong>Mockup: sketch in ASCII, render with AI. Simple, predictable, visual.</strong></p>
+        </div>
+    </section>
+
+    <section id="demo" class="demo-section">
+        <div class="container">
+            <h2>Live Demo</h2>
+            <p class="demo-subtitle">See how different AI models render the same mockup</p>
+
+            <div class="demo-container">
+                <div class="demo-tabs">
+                    <button class="demo-tab active" data-tab="mockup">Mockup</button>
+                    <button class="demo-tab" data-tab="gpt-5.2">GPT-5.2</button>
+                    <button class="demo-tab" data-tab="nanobanana">Nanobanana</button>
+                    <button class="demo-tab" data-tab="notebookllm">NotebookLLM</button>
+                </div>
+
+                <div class="demo-content">
+                    <!-- Mockup Source Tab -->
+                    <div class="demo-panel active" id="panel-mockup">
+                        <pre class="mockup-source"><code>┌────────────────────────────────────────────────────────────────┐
+│                                                                │
+│                         ┌─┐                                    │
+│                         │M│ ockup                              │
+│                         └─┘                                    │
+│                                                                │
+│                   The Markdown for Slides                      │
+│                                                                │
+│                          🚀                                    │
+│                                                                │
+└────────────────────────────────────────────────────────────────┘
+
+> Cover slide
+
+┌────────────────────────────────────────────────────────────────┐
+│                                                                │
+│                        **Workflow**                            │
+│                                                                │
+│      ┌──────────┐      ┌──────────┐      ┌──────────┐         │
+│      │   📝    │      │    🤖    │      │    🎨    │         │
+│      │ Draft①  │ ───→ │Generate② │ ───→ │ Images③ │         │
+│      └──────────┘      └──────────┘      └──────────┘         │
+│                                                                │
+└────────────────────────────────────────────────────────────────┘
+
+> ① User describes requirements
+> ② AI generates mu draft
+> ③ AI generates final slide images</code></pre>
+                    </div>
+
+                    <!-- AI Output Tabs -->
+                    <div class="demo-panel" id="panel-gpt-5.2">
+                        <div class="slide-viewer">
+                            <div class="slide-display">
+                                <div class="slide-placeholder" data-ai="gpt-5.2">
+                                    <span>GPT-5.2 Output</span>
+                                    <small>Coming Soon</small>
+                                </div>
+                            </div>
+                            <div class="slide-nav">
+                                <button class="slide-prev" disabled>◀ Prev</button>
+                                <span class="slide-counter">1 / 2</span>
+                                <button class="slide-next">Next ▶</button>
+                            </div>
+                            <div class="slide-thumbs">
+                                <div class="thumb active" data-slide="1">1</div>
+                                <div class="thumb" data-slide="2">2</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="demo-panel" id="panel-nanobanana">
+                        <div class="slide-viewer">
+                            <div class="slide-display">
+                                <div class="slide-placeholder" data-ai="nanobanana">
+                                    <span>Nanobanana Output</span>
+                                    <small>Coming Soon</small>
+                                </div>
+                            </div>
+                            <div class="slide-nav">
+                                <button class="slide-prev" disabled>◀ Prev</button>
+                                <span class="slide-counter">1 / 2</span>
+                                <button class="slide-next">Next ▶</button>
+                            </div>
+                            <div class="slide-thumbs">
+                                <div class="thumb active" data-slide="1">1</div>
+                                <div class="thumb" data-slide="2">2</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="demo-panel" id="panel-notebookllm">
+                        <div class="slide-viewer">
+                            <div class="slide-display">
+                                <div class="slide-placeholder" data-ai="notebookllm">
+                                    <span>NotebookLLM Output</span>
+                                    <small>Coming Soon</small>
+                                </div>
+                            </div>
+                            <div class="slide-nav">
+                                <button class="slide-prev" disabled>◀ Prev</button>
+                                <span class="slide-counter">1 / 2</span>
+                                <button class="slide-next">Next ▶</button>
+                            </div>
+                            <div class="slide-thumbs">
+                                <div class="thumb active" data-slide="1">1</div>
+                                <div class="thumb" data-slide="2">2</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -66,27 +157,68 @@
     <section id="examples" class="examples">
         <div class="container">
             <h2>Examples</h2>
+            <p class="examples-subtitle">Real-world slides converted to mockup format</p>
+
             <div class="example-grid">
-                <div class="example-card">
-                    <h3>📊 mockup-intro</h3>
-                    <p>mockup.md self-introduction</p>
-                    <a href="https://github.com/simpx/mockup.md/tree/main/examples/00-mockup-intro" class="example-link">View Example →</a>
-                </div>
-                <div class="example-card">
-                    <h3>🏠 airbnb-pitch-deck</h3>
-                    <p>Classic 2009 startup pitch deck</p>
-                    <a href="https://github.com/simpx/mockup.md/tree/main/examples/01-airbnb-pitch-deck" class="example-link">View Example →</a>
-                </div>
-                <div class="example-card">
-                    <h3>🔄 raft-consensus</h3>
-                    <p>Distributed systems paper (Raft)</p>
-                    <a href="https://github.com/simpx/mockup.md/tree/main/examples/02-raft-consensus" class="example-link">View Example →</a>
-                </div>
-                <div class="example-card">
-                    <h3>🗄️ spanner-distributed-db</h3>
-                    <p>Distributed database paper (Spanner)</p>
-                    <a href="https://github.com/simpx/mockup.md/tree/main/examples/04-spanner-distributed-db" class="example-link">View Example →</a>
-                </div>
+                <a href="examples/00-mockup-intro/" class="example-card">
+                    <div class="example-preview">
+                        <div class="example-placeholder">📊</div>
+                    </div>
+                    <div class="example-info">
+                        <h3>mockup-intro</h3>
+                        <p>mockup.md self-introduction</p>
+                    </div>
+                </a>
+
+                <a href="examples/01-airbnb-pitch-deck/" class="example-card">
+                    <div class="example-preview">
+                        <div class="example-placeholder">🏠</div>
+                    </div>
+                    <div class="example-info">
+                        <h3>airbnb-pitch-deck</h3>
+                        <p>Classic 2009 startup pitch deck</p>
+                    </div>
+                </a>
+
+                <a href="examples/02-raft-consensus/" class="example-card">
+                    <div class="example-preview">
+                        <div class="example-placeholder">🔄</div>
+                    </div>
+                    <div class="example-info">
+                        <h3>raft-consensus</h3>
+                        <p>Distributed systems paper (Raft)</p>
+                    </div>
+                </a>
+
+                <a href="examples/03-transformer/" class="example-card">
+                    <div class="example-preview">
+                        <div class="example-placeholder">🤖</div>
+                    </div>
+                    <div class="example-info">
+                        <h3>transformer</h3>
+                        <p>Attention mechanism explained</p>
+                    </div>
+                </a>
+
+                <a href="examples/04-spanner-distributed-db/" class="example-card">
+                    <div class="example-preview">
+                        <div class="example-placeholder">🗄️</div>
+                    </div>
+                    <div class="example-info">
+                        <h3>spanner</h3>
+                        <p>Distributed database (Spanner)</p>
+                    </div>
+                </a>
+
+                <a href="examples/05-gfs/" class="example-card">
+                    <div class="example-preview">
+                        <div class="example-placeholder">📁</div>
+                    </div>
+                    <div class="example-info">
+                        <h3>gfs</h3>
+                        <p>Google File System paper</p>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -99,7 +231,7 @@
                     <h3>Option 1: Copy-Paste (Any AI)</h3>
                     <ol>
                         <li>Copy the entire <a href="https://github.com/simpx/mockup.md/blob/main/mockup.md">mockup.md</a> file</li>
-                        <li>Paste it into your AI chat (Claude, ChatGPT, Gemini, etc.)</li>
+                        <li>Paste it into your AI chat (ChatGPT, Gemini, etc.)</li>
                         <li>Either describe your slides or provide .mu content</li>
                     </ol>
                 </div>
@@ -107,10 +239,9 @@
                     <h3>Option 2: Claude Code CLI</h3>
                     <ol>
                         <li>Install the mockup skill:</li>
-                        <pre style="background: #f5f5f5; padding: 10px; margin: 10px 0; border-radius: 4px;">mkdir -p ~/.claude/skills/mockup
-curl -o ~/.claude/skills/mockup/SKILL.md https://raw.githubusercontent.com/simpx/mockup.md/main/.claude/skills/mockup/SKILL.md
-curl -o ~/.claude/skills/mockup/mockup.md https://raw.githubusercontent.com/simpx/mockup.md/main/mockup.md</pre>
-                        <li>Claude Code will auto-recognize .mu files and mockup-related requests</li>
+                        <pre class="code-block">git clone https://github.com/simpx/mockup.md.git
+cp -rL mockup.md/.claude/skills/mockup ~/.claude/skills/</pre>
+                        <li>Claude Code will auto-recognize .mu files</li>
                     </ol>
                 </div>
             </div>
@@ -120,11 +251,68 @@ curl -o ~/.claude/skills/mockup/mockup.md https://raw.githubusercontent.com/simp
     <footer>
         <div class="container">
             <p>
-                <a href="https://github.com/simpx/mockup.md">GitHub</a> · 
-                <a href="https://github.com/simpx/mockup.md/blob/main/LICENSE">MIT License</a> · 
+                <a href="https://github.com/simpx/mockup.md">GitHub</a> ·
+                <a href="https://github.com/simpx/mockup.md/blob/main/LICENSE">MIT License</a> ·
                 Made with ❤️ for better presentations
             </p>
         </div>
     </footer>
+
+    <script>
+        // Demo Tab Switching
+        document.querySelectorAll('.demo-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabId = tab.dataset.tab;
+
+                // Update active tab
+                document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Update active panel
+                document.querySelectorAll('.demo-panel').forEach(p => p.classList.remove('active'));
+                document.getElementById('panel-' + tabId).classList.add('active');
+            });
+        });
+
+        // Slide Navigation (for when images are added)
+        document.querySelectorAll('.slide-viewer').forEach(viewer => {
+            const prevBtn = viewer.querySelector('.slide-prev');
+            const nextBtn = viewer.querySelector('.slide-next');
+            const counter = viewer.querySelector('.slide-counter');
+            const thumbs = viewer.querySelectorAll('.thumb');
+            let currentSlide = 1;
+            const totalSlides = 2;
+
+            function updateSlide() {
+                counter.textContent = currentSlide + ' / ' + totalSlides;
+                prevBtn.disabled = currentSlide === 1;
+                nextBtn.disabled = currentSlide === totalSlides;
+                thumbs.forEach(t => {
+                    t.classList.toggle('active', parseInt(t.dataset.slide) === currentSlide);
+                });
+            }
+
+            prevBtn.addEventListener('click', () => {
+                if (currentSlide > 1) {
+                    currentSlide--;
+                    updateSlide();
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentSlide < totalSlides) {
+                    currentSlide++;
+                    updateSlide();
+                }
+            });
+
+            thumbs.forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    currentSlide = parseInt(thumb.dataset.slide);
+                    updateSlide();
+                });
+            });
+        });
+    </script>
 </body>
 </html>
