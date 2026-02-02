@@ -4,7 +4,7 @@ This example demonstrates a product introduction presentation for Mockup itself.
 
 ## Files
 
-- `intro.mu` - The Mockup source file (8 slides)
+- `slide.mu` - The Mockup source file (6 slides)
 
 ## Content
 
