@@ -1,12 +1,12 @@
 # Mockup Specification <sub>v0.1.0</sub>
 
-Mockup is an ASCII-based layout description language for slides. Define your slide layouts using ASCII characters, and let AI transform them into polished visual slide images.
+Mockup is an ASCII-based layout description language for slides. Define your slide layouts using ASCII characters, and let AI transform them into polished visuals (images, HTML, SVG, etc.).
 
 ## About This Document
 
 **For humans**: This is the complete format specification for Mockup. Read it to understand the syntax, design principles, and capabilities.
 
-**For AI systems**: This document is a self-contained prompt. When a user pastes this entire file:
+**For AI systems**: This document is a self-contained prompt. When you receive this document (via user paste or skill activation):
 1. Read the specification below to understand Mockup syntax
 2. Then follow the [AI Instructions](#ai-instructions) at the end to perform the requested task
 
@@ -14,7 +14,7 @@ Mockup is an ASCII-based layout description language for slides. Define your sli
 
 ## Overview
 
-**The Problem**: When creating slides, content ideation and visual design compete for attention. Mockup separates these concerns — users focus on content and layout intent, while AI handles aesthetics and image generation.
+**The Problem**: When creating slides, content ideation and visual design compete for attention. Mockup separates these concerns — users focus on content and layout intent, while AI handles aesthetics and rendering.
 
 **Design Principles**:
 
@@ -505,42 +505,34 @@ theme: theme-name
 
 ---
 
-## Task B: Generate Images from `.mu` Files
+## Task B: Render `.mu` Files
 
-**When to activate**: User provides `.mu` file content and requests images/rendering.
+**When to activate**: User provides `.mu` file content and requests rendering/output.
 
 ### Your Process
 
-**Step 1: Parse Structure**
+**Step 1: Parse**
 - Read YAML frontmatter for theme/metadata
-- Split content by `# number` to identify each slide
-- Extract page number and optional title from each marker
+- Split content by `# number` to identify each slide (page markers are for parsing only, not rendered)
 - Identify slide boundaries (outermost boxes)
 - Extract annotations (lines starting with `>`)
 
-**Step 2: Interpret Layout**
-- Apply WYSIWYG principle: ASCII position/size = visual position/size
-- Understand box hierarchy from line styles
-- Read text alignment from position
+**Step 2: Render**
 
-**Step 3: Transform ASCII to Graphics**
-- Convert ASCII charts → professional visualizations
-- Transform flowcharts → clean diagrams
-- Render emoji as icons (or keep if theme-appropriate)
-- Apply consistent visual style
+Render to the format user requests (image, HTML, SVG, etc.).
 
-**Step 4: Apply Annotations**
-- Process color specifications: `> ① color: red` or `> ① color: #EF4444`
-- Handle asset replacements: `> ① replace with: photo.jpg`
-- Note animation sequences: `> ① appears first, then ②`
-- Set backgrounds: `> background: dark-blue`
-- **Exclude** speaker notes from images: `> notes: pause here`
+Requirements:
+- **Visual fidelity**: Output must match the mockup description — layout, content, annotations, and theme
+- **Follow Rendering Guidelines**: See below for detailed rules on proportions, text, graphics, etc.
+- **One output per slide**: Each slide becomes one image/page
+- **Aspect ratio**: 16:9 preferred (1920x1080 for images)
+- **Consistency**: Maintain uniform style across all slides
 
-**Step 5: Generate Images**
-- One image per slide
-- Aspect ratio: 16:9 (recommended 1920x1080)
-- High quality, slide-ready
-- Maintain style consistency across all slides
+### Predefined Themes
+
+- `academic` (default) — White background, clean fonts, navy accents, formal style
+- `startup` — Bold sans-serif, vibrant colors, modern gradients
+- `tech` — Dark background, monospace + sans-serif, cyan/green accents
 
 ### Rendering Guidelines
 
@@ -573,14 +565,22 @@ theme: theme-name
 | `───→` arrows | Smooth vector arrows |
 | UI sketches | Clean interface mockups |
 
-**Default Style** (when no theme specified):
-- White/light background (like academic papers)
-- Clean sans-serif fonts (e.g., Helvetica, Arial)
-- Minimal colors: black text, blue for links/accents
-- Professional and readable, suitable for technical content
+**Annotations**:
+- Apply colors: `> ① color: red` or `> ① color: #EF4444`
+- Set backgrounds: `> background: dark-blue` or `> background-image: bg.jpg`
+- Replace assets: `> ① replace with: photo.jpg`
+- Render LaTeX: `> ① render as LaTeX: E=mc^2`
+- Apply code highlighting: `> ① language: python`
+- Add links: `> ① link: https://example.com`
+- Handle animations: `> ① appears first, then ②` (for animated output formats)
+
+**Not Rendered**:
+- Page markers: `# 1`, `# 2 Problem` (for parsing/organization only)
+- Speaker notes: `> notes: ...`
+- Skipped slides: `> skip`
 
 **Style Consistency**:
-- Choose color scheme from theme metadata (or use default above)
+- Choose color scheme from theme metadata
 - Use consistent fonts throughout
 - Maintain uniform spacing and padding
 - Apply consistent border-radius to boxes
