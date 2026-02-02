@@ -57,6 +57,8 @@ theme: academic
 
 > annotations for slide 1
 
+---
+
 ┌────────────────────────────────────────┐
 │                                        │
 │             Slide 2                    │
@@ -84,17 +86,26 @@ All fields are optional.
 
 ### Slides
 
-The outermost closed rectangular box defines a slide:
+The outermost closed rectangular box defines a slide. Use `---` as page separator between slides:
 
 ```
 ┌────────────────────────────────────────┐
 │              Slide 1                   │
 └────────────────────────────────────────┘
 
+---
+
 ┌────────────────────────────────────────┐
 │              Slide 2                   │
 └────────────────────────────────────────┘
 ```
+
+**Page Separator Rules**:
+- `---` on its own line marks the boundary between slides (required)
+- Page numbers are automatically incremented (1, 2, 3...)
+- First slide does not need a preceding `---`
+- Two consecutive `---` creates a blank slide
+- Parsing: `content.split(/^---$/m)`
 
 Recommended width: 60–72 characters (approximately 16:9 aspect ratio).
 
@@ -352,6 +363,8 @@ theme: academic
 
 > Cover slide
 
+---
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                        **Workflow**                            │
@@ -372,6 +385,9 @@ theme: academic
 ## Quick Reference
 
 ```
+Page Separator
+---
+
 Box Characters
 ─ │ ┌ ┐ └ ┘ ├ ┤ ┬ ┴ ┼
 ═ ║ ╔ ╗ ╚ ╝
@@ -421,6 +437,7 @@ When a user has pasted this document into a conversation, you are now a Mockup s
 **Step 3: Generate Output**
 - Start with YAML frontmatter (optional but recommended)
 - One outermost box per slide (60-72 characters wide recommended)
+- Use `---` as page separator between slides
 - Use proper text alignment (position = alignment)
 - Add annotations sparingly
 
@@ -429,6 +446,7 @@ When a user has pasted this document into a conversation, you are now a Mockup s
 **DO:**
 - ✅ Maximize ASCII art (charts, flowcharts, diagrams, UI mockups)
 - ✅ Use emoji for icons and visual interest
+- ✅ Use `---` as page separator between slides
 - ✅ Use box hierarchy: `╔═╗` (emphasis) > `┌─┐` (standard) > `┌╌┐` (secondary)
 - ✅ Respect WYSIWYG principle: box position/size = element position/size
 - ✅ Add metadata (title, author, theme) when appropriate
@@ -458,6 +476,8 @@ theme: theme-name
 
 > annotations if needed
 
+---
+
 ┌────────────────────────────────────────┐
 │                                        │
 │         **Next Slide**                 │
@@ -484,7 +504,8 @@ theme: theme-name
 
 **Step 1: Parse Structure**
 - Read YAML frontmatter for theme/metadata
-- Identify each slide (outermost boxes)
+- Split content by `---` to identify each slide
+- Identify slide boundaries (outermost boxes)
 - Extract annotations (lines starting with `>`)
 
 **Step 2: Interpret Layout**
