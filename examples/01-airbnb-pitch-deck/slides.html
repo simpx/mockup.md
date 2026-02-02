@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AirBed&Breakfast Pitch Deck</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #1a1a2e;
+            color: #333;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            width: 1280px;
+            height: 720px;
+            background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
+            border-radius: 12px;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+            display: none;
+            flex-direction: column;
+            padding: 60px 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-size: 14px;
+            color: #999;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 36px;
+            font-weight: 600;
+            text-align: center;
+            color: #FF5A5F;
+            margin-bottom: 40px;
+        }
+
+        .brand-name {
+            color: #FF5A5F;
+        }
+
+        .tagline {
+            font-size: 24px;
+            text-align: center;
+            color: #666;
+        }
+
+        /* Slide 1 - Title */
+        .slide-1 {
+            justify-content: center;
+            align-items: center;
+        }
+
+        .slide-1 h1 {
+            font-size: 64px;
+            margin-bottom: 30px;
+        }
+
+        /* Slide 2 - Problem */
+        .problem-list {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 30px;
+            padding: 0 40px;
+        }
+
+        .problem-item {
+            font-size: 22px;
+            line-height: 1.6;
+        }
+
+        .problem-item strong {
+            color: #FF5A5F;
+            font-weight: 700;
+        }
+
+        /* Slide 3 - Solution */
+        .solution-intro {
+            text-align: center;
+            font-size: 20px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .value-props {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 0 60px;
+        }
+
+        .value-box {
+            background: linear-gradient(135deg, #FF5A5F 0%, #FF385C 100%);
+            color: white;
+            padding: 24px 30px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 18px;
+        }
+
+        .value-box strong {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        /* Slide 4 - Market Validation */
+        .stats-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 72px;
+            font-weight: 800;
+            color: #FF5A5F;
+            line-height: 1;
+        }
+
+        .stat-desc {
+            font-size: 18px;
+            color: #666;
+            margin-top: 10px;
+            max-width: 400px;
+        }
+
+        /* Slide 5 - Market Size */
+        .market-funnel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .market-circle {
+            border-radius: 50%;
+            background: linear-gradient(135deg, #FF5A5F 0%, #FF385C 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .market-circle.tam {
+            width: 280px;
+            height: 280px;
+        }
+
+        .market-circle.sam {
+            width: 220px;
+            height: 220px;
+        }
+
+        .market-circle.som {
+            width: 160px;
+            height: 160px;
+        }
+
+        .market-circle .number {
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .market-circle .label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+            opacity: 0.9;
+        }
+
+        .market-circle .sublabel {
+            font-size: 10px;
+            opacity: 0.8;
+            margin-top: 3px;
+        }
+
+        /* Slide 6 - Product */
+        .product-flow {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .product-step {
+            text-align: center;
+        }
+
+        .product-screenshot {
+            width: 180px;
+            height: 240px;
+            background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            margin-bottom: 20px;
+            border: 2px solid #ddd;
+        }
+
+        .product-label {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-arrow {
+            font-size: 32px;
+            color: #FF5A5F;
+            margin-top: -140px;
+        }
+
+        /* Slide 7 - Business Model */
+        .business-model {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .commission-text {
+            font-size: 22px;
+            color: #666;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .revenue-funnel {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .funnel-box {
+            background: linear-gradient(135deg, #FF5A5F 0%, #FF385C 100%);
+            color: white;
+            border-radius: 10px;
+            padding: 20px 30px;
+            text-align: center;
+            min-width: 180px;
+        }
+
+        .funnel-box .number {
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .funnel-box .label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+            opacity: 0.9;
+        }
+
+        .funnel-box .sublabel {
+            font-size: 11px;
+            opacity: 0.8;
+        }
+
+        .funnel-arrow {
+            font-size: 28px;
+            color: #FF5A5F;
+        }
+
+        /* Slide 8 - Market Adoption */
+        .adoption-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .adoption-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .adoption-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #FF5A5F;
+            margin-bottom: 8px;
+        }
+
+        .adoption-card .subtitle {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .adoption-card .content {
+            flex: 1;
+            font-size: 14px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .partner-logos {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .partner-logo {
+            background: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 13px;
+            color: #666;
+            text-align: center;
+        }
+
+        .integration-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .integration-box {
+            background: white;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .integration-arrow {
+            color: #FF5A5F;
+            font-size: 20px;
+        }
+
+        /* Slide 9 - Competition */
+        .competition-matrix {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .matrix-header {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .matrix-header span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .matrix-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 15px;
+            position: relative;
+        }
+
+        .matrix-cell {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .matrix-cell.highlight {
+            background: linear-gradient(135deg, #FFF5F5 0%, #FFE5E6 100%);
+            border: 3px solid #FF5A5F;
+        }
+
+        .matrix-cell h4 {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .matrix-cell .competitors {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .matrix-cell.highlight .our-brand {
+            font-size: 20px;
+            font-weight: 700;
+            color: #FF5A5F;
+        }
+
+        .axis-label {
+            position: absolute;
+            font-size: 12px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .axis-label.right {
+            right: -80px;
+            top: 50%;
+            transform: rotate(90deg) translateX(-50%);
+        }
+
+        /* Slide 10 - Competitive Advantages */
+        .advantages-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(3, 1fr);
+            gap: 20px;
+            padding: 10px 20px;
+        }
+
+        .advantage-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .advantage-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #FF5A5F;
+            margin-bottom: 12px;
+        }
+
+        .advantage-card p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* Navigation */
+        .nav-hint {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #666;
+            font-size: 14px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-hint kbd {
+            background: #eee;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: inherit;
+            margin: 0 3px;
+        }
+
+        /* Progress bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #FF5A5F, #FF385C);
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progress"></div>
+
+    <div class="slide-container">
+        <!-- Slide 1: Title -->
+        <div class="slide slide-1 active" data-slide="1">
+            <h1><span class="brand-name">AirBed&Breakfast</span></h1>
+            <p class="tagline">Book rooms with locals, rather than hotels.</p>
+            <span class="slide-number">1 / 10</span>
+        </div>
+
+        <!-- Slide 2: Problem -->
+        <div class="slide slide-2" data-slide="2">
+            <h2>Problem</h2>
+            <div class="problem-list">
+                <p class="problem-item"><strong>Price</strong> is an important concern for customers booking travel online.</p>
+                <p class="problem-item"><strong>Hotels</strong> leave you disconnected from the city and its culture.</p>
+                <p class="problem-item"><strong>No easy way exists</strong> to book a room with a local or become a host.</p>
+            </div>
+            <span class="slide-number">2 / 10</span>
+        </div>
+
+        <!-- Slide 3: Solution -->
+        <div class="slide slide-3" data-slide="3">
+            <h2>Solution</h2>
+            <p class="solution-intro">A web platform where users can rent out their space to host travelers to:</p>
+            <div class="value-props">
+                <div class="value-box">
+                    <strong>SAVE MONEY</strong>
+                    <span>when traveling</span>
+                </div>
+                <div class="value-box">
+                    <strong>MAKE MONEY</strong>
+                    <span>when hosting</span>
+                </div>
+                <div class="value-box">
+                    <strong>SHARE CULTURE</strong>
+                    <span>local connection to city</span>
+                </div>
+            </div>
+            <span class="slide-number">3 / 10</span>
+        </div>
+
+        <!-- Slide 4: Market Validation -->
+        <div class="slide slide-4" data-slide="4">
+            <h2>Market Validation</h2>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">630,000</div>
+                    <p class="stat-desc">on temporary housing site couchsurfing.com</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">17,000</div>
+                    <p class="stat-desc">temporary housing listings on SF & NYC Craigslist from 07/09 - 07/16</p>
+                </div>
+            </div>
+            <span class="slide-number">4 / 10</span>
+        </div>
+
+        <!-- Slide 5: Market Size -->
+        <div class="slide slide-5" data-slide="5">
+            <h2>Market Size</h2>
+            <div class="market-funnel">
+                <div class="market-circle tam">
+                    <span class="number">1.9 Billion+</span>
+                    <span class="label">Trips Booked (Worldwide)</span>
+                    <span class="sublabel">Total Available Market</span>
+                </div>
+                <div class="market-circle sam">
+                    <span class="number">532M</span>
+                    <span class="label">Budget & Online Trips</span>
+                    <span class="sublabel">Serviceable Available Market</span>
+                </div>
+                <div class="market-circle som">
+                    <span class="number">10.6M</span>
+                    <span class="label">Trips w/AB&B</span>
+                    <span class="sublabel">Market Share</span>
+                </div>
+            </div>
+            <span class="slide-number">5 / 10</span>
+        </div>
+
+        <!-- Slide 6: Product -->
+        <div class="slide slide-6" data-slide="6">
+            <h2>Product</h2>
+            <div class="product-flow">
+                <div class="product-step">
+                    <div class="product-screenshot">🔍🏠</div>
+                    <p class="product-label">Search by City</p>
+                </div>
+                <span class="product-arrow">→</span>
+                <div class="product-step">
+                    <div class="product-screenshot">📋🏠</div>
+                    <p class="product-label">Review Listings</p>
+                </div>
+                <span class="product-arrow">→</span>
+                <div class="product-step">
+                    <div class="product-screenshot">✅💳</div>
+                    <p class="product-label">Book It!</p>
+                </div>
+            </div>
+            <span class="slide-number">6 / 10</span>
+        </div>
+
+        <!-- Slide 7: Business Model -->
+        <div class="slide slide-7" data-slide="7">
+            <h2>Business Model</h2>
+            <div class="business-model">
+                <p class="commission-text">We take a <strong>10% commission</strong> on each transaction.</p>
+                <div class="revenue-funnel">
+                    <div class="funnel-box">
+                        <div class="number">10.6M</div>
+                        <div class="label">Trips w/AB&B</div>
+                        <div class="sublabel">Share of Market</div>
+                    </div>
+                    <span class="funnel-arrow">↓</span>
+                    <div class="funnel-box">
+                        <div class="number">$20</div>
+                        <div class="label">Avg Fee</div>
+                        <div class="sublabel">$70/night @ 3 nights</div>
+                    </div>
+                    <span class="funnel-arrow">↓</span>
+                    <div class="funnel-box" style="background: linear-gradient(135deg, #00C853 0%, #00E676 100%);">
+                        <div class="number">$200M</div>
+                        <div class="label">Revenue</div>
+                        <div class="sublabel">2008-2011</div>
+                    </div>
+                </div>
+            </div>
+            <span class="slide-number">7 / 10</span>
+        </div>
+
+        <!-- Slide 8: Market Adoption -->
+        <div class="slide slide-8" data-slide="8">
+            <h2>Market Adoption</h2>
+            <div class="adoption-grid">
+                <div class="adoption-card">
+                    <h3>EVENTS</h3>
+                    <p class="subtitle">target events monthly</p>
+                    <div class="content">
+                        Octoberfest (6M)<br>
+                        Cebit (700K)<br>
+                        Summerfest (1M)<br>
+                        Eurocup (3M+)<br>
+                        Mardi Gras (800K)<br><br>
+                        <em>with listing widget</em>
+                    </div>
+                </div>
+                <div class="adoption-card">
+                    <h3>PARTNERSHIPS</h3>
+                    <p class="subtitle">cheap/alternative travel</p>
+                    <div class="partner-logos">
+                        <div class="partner-logo">GoLoco</div>
+                        <div class="partner-logo">Kayak</div>
+                        <div class="partner-logo">Orbitz</div>
+                    </div>
+                </div>
+                <div class="adoption-card">
+                    <h3>CRAIGSLIST</h3>
+                    <p class="subtitle">dual posting feature</p>
+                    <div class="integration-diagram">
+                        <div class="integration-box">AirB</div>
+                        <span class="integration-arrow">↔</span>
+                        <div class="integration-box">CL</div>
+                    </div>
+                    <p style="text-align: center; margin-top: 15px; color: #888; font-size: 13px;">Integration diagram</p>
+                </div>
+            </div>
+            <span class="slide-number">8 / 10</span>
+        </div>
+
+        <!-- Slide 9: Competition -->
+        <div class="slide slide-9" data-slide="9">
+            <h2>Competition</h2>
+            <div class="competition-matrix">
+                <div class="matrix-header">
+                    <span>OFFLINE TRANSACTION ←</span>
+                    <span>→ ONLINE TRANSACTION</span>
+                </div>
+                <div class="matrix-grid">
+                    <div class="matrix-cell">
+                        <h4>Affordable + Offline</h4>
+                        <div class="competitors">
+                            CouchSurfing<br>
+                            Craigslist<br>
+                            BedandBreakfast.com
+                        </div>
+                    </div>
+                    <div class="matrix-cell highlight">
+                        <h4>Affordable + Online</h4>
+                        <div class="our-brand">AirBed&Breakfast</div>
+                        <p style="margin-top: 10px; font-size: 14px; color: #888;">(our position)</p>
+                    </div>
+                    <div class="matrix-cell">
+                        <h4>Expensive + Offline</h4>
+                        <div class="competitors">
+                            VRBO<br>
+                            rentdot.com
+                        </div>
+                    </div>
+                    <div class="matrix-cell">
+                        <h4>Expensive + Online</h4>
+                        <div class="competitors">
+                            hotels.com<br>
+                            Hostels.com
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span class="slide-number">9 / 10</span>
+        </div>
+
+        <!-- Slide 10: Competitive Advantages -->
+        <div class="slide slide-10" data-slide="10">
+            <h2>Competitive Advantages</h2>
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <h3>1st TO MARKET</h3>
+                    <p>First mover in the online P2P lodging marketplace</p>
+                </div>
+                <div class="advantage-card">
+                    <h3>HOST INCENTIVE</h3>
+                    <p>Hosts earn money by renting their space to travelers</p>
+                </div>
+                <div class="advantage-card">
+                    <h3>EASE OF USE</h3>
+                    <p>Simple 3-step flow: search, review, book</p>
+                </div>
+                <div class="advantage-card">
+                    <h3>PROFILES</h3>
+                    <p>Trust through user profiles and reviews</p>
+                </div>
+                <div class="advantage-card">
+                    <h3>LIST ONCE</h3>
+                    <p>Cross-post to multiple platforms automatically</p>
+                </div>
+                <div class="advantage-card">
+                    <h3>DESIGN & BRAND</h3>
+                    <p>Clean, professional user experience</p>
+                </div>
+            </div>
+            <span class="slide-number">10 / 10</span>
+        </div>
+    </div>
+
+    <div class="nav-hint">
+        Press <kbd>←</kbd> <kbd>→</kbd> or <kbd>Space</kbd> to navigate
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 10;
+
+        function showSlide(n) {
+            if (n < 1) n = totalSlides;
+            if (n > totalSlides) n = 1;
+
+            document.querySelectorAll('.slide').forEach(slide => {
+                slide.classList.remove('active');
+            });
+
+            document.querySelector(`[data-slide="${n}"]`).classList.add('active');
+            currentSlide = n;
+
+            // Update progress bar
+            document.getElementById('progress').style.width = `${(n / totalSlides) * 100}%`;
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                showSlide(currentSlide + 1);
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                showSlide(currentSlide - 1);
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                showSlide(1);
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                showSlide(totalSlides);
+            }
+        });
+
+        // Touch support
+        let touchStartX = 0;
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        });
+
+        document.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].clientX;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    showSlide(currentSlide + 1);
+                } else {
+                    showSlide(currentSlide - 1);
+                }
+            }
+        });
+
+        // Click to advance
+        document.querySelector('.slide-container').addEventListener('click', (e) => {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+
+            if (x > rect.width / 2) {
+                showSlide(currentSlide + 1);
+            } else {
+                showSlide(currentSlide - 1);
+            }
+        });
+
+        // Initialize progress bar
+        document.getElementById('progress').style.width = `${(1 / totalSlides) * 100}%`;
+    </script>
+</body>
+</html>
