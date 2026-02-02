@@ -4,6 +4,9 @@ author: Wilson Hsieh
 theme: google-blue
 ---
 
+
+# 1
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                                                                │
@@ -21,6 +24,9 @@ theme: google-blue
 
 > Title slide with Google logo at bottom
 > Blue gradient background typical of Google presentations
+
+
+# 2
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -41,6 +47,9 @@ theme: google-blue
 
 > Introduction to Spanner's key features
 > Two main bullet groups: capabilities and production status
+
+
+# 3
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -67,6 +76,9 @@ theme: google-blue
 > Central database icon showing shared data model
 > US (green), Spain (orange), Brazil (red), Russia (purple)
 
+
+# 4
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                        **Overview**                            │
@@ -89,6 +101,9 @@ theme: google-blue
 
 > Four key aspects of Spanner
 > Feature, Property, Implementation, Enabling technology
+
+
+# 5
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -113,6 +128,9 @@ theme: google-blue
 > Privacy scenario: unfriending before posting sensitive content
 > Without consistency, X might still see post P
 
+
+# 6
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                     **Single Machine**                         │
@@ -136,6 +154,9 @@ theme: google-blue
 > Single database contains user posts and friend lists
 > Orange/peach colored database cylinder
 
+
+# 7
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                   **Multiple Machines**                        │
@@ -157,6 +178,9 @@ theme: google-blue
 > Two machines scenario - data sharded across machines
 > Both machines need to be blocked for consistent read
 > Green database (top) and pink database (bottom)
+
+
+# 8
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -180,6 +204,9 @@ theme: google-blue
 > Each region has x1000 servers (stacked cylinders)
 > US (green), Spain (orange), Brazil (red), Russia (purple)
 > No global lock - need different approach
+
+
+# 9
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -205,6 +232,9 @@ theme: google-blue
 > At time 8: unfriending happens (both remove each other)
 > At time 15: post P is made
 
+
+# 10
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                 **Synchronizing Snapshots**                    │
@@ -229,6 +259,9 @@ theme: google-blue
 > Global time = External consistency = Timestamp order
 > Foundation of Spanner's correctness
 
+
+# 11
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                 **Timestamps, Global Clock**                   │
@@ -251,6 +284,9 @@ theme: google-blue
 > Timeline diagram showing transaction T
 > Timestamp assigned after acquiring locks, before releasing
 > Purple cylinder represents database server
+
+
+# 12
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -276,6 +312,9 @@ theme: google-blue
 > Second: across servers, wall-time order is respected
 > Green and purple cylinders represent different servers
 
+
+# 13
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                        **TrueTime**                            │
@@ -299,6 +338,9 @@ theme: google-blue
 > True time is guaranteed to be within [earliest, latest]
 > Uncertainty bound is 2*epsilon
 
+
+# 14
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                 **Timestamps and TrueTime**                    │
@@ -321,6 +363,9 @@ theme: google-blue
 > Commit wait: wait out the uncertainty
 > Pick timestamp at latest bound, wait until earliest passes it
 > Total wait time is approximately 2*epsilon (average)
+
+
+# 15
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -346,6 +391,9 @@ theme: google-blue
 > Three purple cylinders: leader and two replicas
 > Consensus achieved during commit wait period
 
+
+# 16
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │               **Commit Wait and 2-Phase Commit**               │
@@ -369,6 +417,9 @@ theme: google-blue
 > 2PC with TrueTime integration
 > TC = Transaction Coordinator, TP1/TP2 = Participants
 > Each participant computes local s, coordinator picks max
+
+
+# 17
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -398,6 +449,9 @@ theme: google-blue
 > Post P gets timestamp 15, after unfriending at 8
 > X can never see post P due to consistent snapshots
 
+
+# 18
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                  **What Have We Covered?**                     │
@@ -420,6 +474,9 @@ theme: google-blue
 > Summary of main topics covered so far
 > Four key concepts explained
 
+
+# 19
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                **What Haven't We Covered?**                    │
@@ -441,6 +498,9 @@ theme: google-blue
 
 > Topics not covered in this talk
 > Refer to paper for details
+
+
+# 20
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -469,6 +529,9 @@ theme: google-blue
 > Atomic clock timemaster provides backup
 > Clients poll multiple timemasters
 
+
+# 21
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                 **TrueTime Implementation**                    │
@@ -494,6 +557,9 @@ theme: google-blue
 > 200 microseconds/second drift rate
 > Sync every 30 seconds keeps epsilon bounded
 
+
+# 22
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │               **What If a Clock Goes Rogue?**                  │
@@ -515,6 +581,9 @@ theme: google-blue
 > Safety relies on clock correctness
 > Empirical evidence shows clocks are reliable
 > CPU failures more common than clock failures
+
+
+# 23
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -543,6 +612,9 @@ theme: google-blue
 > 90th, 99th, 99.9th percentiles shown
 > 99.9th percentile stays under 10ms
 
+
+# 24
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                 **What's in the Literature**                   │
@@ -564,6 +636,9 @@ theme: google-blue
 
 > Related work from academic literature
 > Builds on decades of distributed systems research
+
+
+# 25
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -587,6 +662,9 @@ theme: google-blue
 > Lower latency through better time sync
 > Richer database functionality
 
+
+# 26
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                       **Conclusions**                          │
@@ -608,6 +686,9 @@ theme: google-blue
 > Two key takeaways
 > 1. Expose uncertainty in APIs, design around it
 > 2. Scale doesn't require giving up strong consistency
+
+
+# 27
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │

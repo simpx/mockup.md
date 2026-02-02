@@ -4,6 +4,8 @@ author: Brian Chesky, Joe Gebbia, Nathan Blecharczyk
 theme: startup-blue
 ---
 
+# 1
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                                                                │
@@ -18,6 +20,8 @@ theme: startup-blue
 
 > Title slide, clean and centered
 > Blue accent color for brand name
+
+# 2 Problem
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -36,6 +40,8 @@ theme: startup-blue
 
 > Three problem statements, each with bold keyword at start
 > Vertical list layout
+
+# 3 Solution
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -59,6 +65,8 @@ theme: startup-blue
 > Three value proposition boxes stacked vertically
 > ① ② ③ boxes use blue background color
 
+# 4 Market Validation
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                    **Market Validation**                       │
@@ -78,6 +86,8 @@ theme: startup-blue
 
 > Two large statistics with descriptions
 > Numbers should be very large, blue colored
+
+# 5 Market Size
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -110,6 +120,8 @@ theme: startup-blue
 > Render boxes as circles, blue filled
 > Circles should be vertically stacked, getting smaller
 
+# 6 Product
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                        **Product**                             │
@@ -130,6 +142,8 @@ theme: startup-blue
 > Product flow with 3 screenshots
 > Diagonal cascade layout in original - can render as stepped
 > Labels below each screenshot
+
+# 7 Business Model
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -164,6 +178,8 @@ theme: startup-blue
 > Top circle blue filled, others as values flowing down
 > Vertical funnel with arrows
 
+# 8 Market Adoption
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                     **Market Adoption**                        │
@@ -192,6 +208,8 @@ theme: startup-blue
 
 > 3-column layout for go-to-market channels
 > Each column: title + subtitle + visual content
+
+# 9 Competition
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -223,6 +241,8 @@ theme: startup-blue
 > 2x2 competitive positioning matrix
 > AirBed&Breakfast highlighted in top-right quadrant (Affordable + Online)
 > Show competitor logos in each quadrant
+
+# 10 Competitive Advantages
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │

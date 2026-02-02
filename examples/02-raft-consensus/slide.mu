@@ -4,6 +4,9 @@ author: Diego Ongaro, John Ousterhout
 theme: academic-blue
 ---
 
+
+# 1
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                                                                │
@@ -20,6 +23,9 @@ theme: academic-blue
 └────────────────────────────────────────────────────────────────┘
 
 > Title slide with Stanford PlatformLab logo at bottom
+
+
+# 2
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -40,6 +46,9 @@ theme: academic-blue
 > Words scattered across slide, building up
 > "Understandability!" in red, emphasized as the answer
 > Gray text for first three, red bold for the answer
+
+
+# 3
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -67,6 +76,9 @@ theme: academic-blue
 > Bullet point overview slide
 > "understandability" in red color
 
+
+# 4
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                      **State Machine**                         │
@@ -87,6 +99,9 @@ theme: academic-blue
 > Left side: bullet points
 > Right side: diagram showing Clients sending request to State Machine, getting result back
 > State machine shown as connected nodes/circles
+
+
+# 5
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -116,6 +131,9 @@ theme: academic-blue
 > Logs shown as table cells with commands: x←1, y←3, x←4, z←x
 > Clients at top sending commands to servers
 
+
+# 6
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                   **Paxos (Single Decree)**                    │
@@ -141,6 +159,9 @@ theme: academic-blue
 > Two-column layout: Proposers on left, Acceptors on right
 > Arrows showing message flow between them
 > Protocol steps described on each side
+
+
+# 7
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -171,6 +192,9 @@ theme: academic-blue
 > Right: two quote boxes from NSDI reviewer and Chubby authors
 > Bottom conclusion in red
 
+
+# 8
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                      **Raft Challenge**                        │
@@ -195,6 +219,9 @@ theme: academic-blue
 > Standard bullet point slide
 > "understandability" highlighted in red
 
+
+# 9
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                    **Raft Decomposition**                      │
@@ -217,6 +244,9 @@ theme: academic-blue
 
 > Three numbered sections with sub-bullets
 > Clear decomposition of Raft into three parts
+
+
+# 10
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -246,6 +276,9 @@ theme: academic-blue
 > Arrows showing transitions between states
 > Annotations on right explaining each state's behavior
 
+
+# 11
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                          **Terms**                             │
@@ -273,6 +306,9 @@ theme: academic-blue
 > E = Election phase (short), followed by normal operation (longer)
 > Term 4 shows split vote (no leader)
 > Bottom: key bullet points about terms
+
+
+# 12
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -307,6 +343,9 @@ theme: academic-blue
 > Two outcomes: become leader (majority) or become follower (RPC from leader)
 > Timeout loops back
 
+
+# 13
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                   **Election Correctness**                     │
@@ -333,6 +372,9 @@ theme: academic-blue
 > Diagram showing 5 servers, 3 already voted for A
 > Dotted box around the 3 that voted, showing B can't get majority
 > Bullet points explaining safety and liveness
+
+
+# 14
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -362,6 +404,9 @@ theme: academic-blue
 
 > Standard bullet point slide describing normal operation flow
 > "committed" in red
+
+
+# 15
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -393,6 +438,9 @@ theme: academic-blue
 > Color-coded by term (1=blue, 2=yellow, 3=green)
 > Committed entries bracket shown
 
+
+# 16
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                    **Log Inconsistencies**                     │
@@ -416,6 +464,9 @@ theme: academic-blue
 > Each cell shows term number
 > Shows missing entries, extra entries, wrong entries
 > s1 is the leader for term 4
+
+
+# 17
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -445,6 +496,9 @@ theme: academic-blue
 > Arrow pointing to index 6 where logs match (same term & index)
 > All entries before that point are identical
 
+
+# 18
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │               **AppendEntries Consistency Check**              │
@@ -468,6 +522,9 @@ theme: academic-blue
 > Example 1: terms match, entry appended (success)
 > Example 2: terms don't match, rejected (mismatch)
 > Example 3: after retry at lower index, success
+
+
+# 19
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -495,6 +552,9 @@ theme: academic-blue
 > Right: table showing 5 servers with their logs
 > s3 has longest log with term 3, s5 has many term 2 entries
 
+
+# 20
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                     **Raft Evaluation**                        │
@@ -516,6 +576,9 @@ theme: academic-blue
 
 > Standard bullet point slide
 > Four evaluation criteria listed
+
+
+# 21
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -541,6 +604,9 @@ theme: academic-blue
 └────────────────────────────────────────────────────────────────┘
 
 > Details of user study methodology
+
+
+# 22
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -573,6 +639,9 @@ theme: academic-blue
 > Right: bar chart showing subjective assessment
 > Overwhelming preference for Raft in both "implement" and "explain"
 
+
+# 23
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                          **Impact**                            │
@@ -599,6 +668,9 @@ theme: academic-blue
 
 > Two-column layout contrasting publication difficulty with adoption success
 
+
+# 24
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                       **Conclusions**                          │
@@ -619,6 +691,9 @@ theme: academic-blue
 
 > Three main conclusion points
 > Emphasizes understandability as key design principle
+
+
+# 25
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
