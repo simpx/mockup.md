@@ -1,7 +1,7 @@
 ---
 title: The Google File System
 author: Firas Abuzaid
-theme: tech-blue
+theme: tech
 ---
 
 

@@ -1,7 +1,7 @@
 ---
 title: Designing for Understandability: the Raft Consensus Algorithm
 author: Diego Ongaro, John Ousterhout
-theme: academic-blue
+theme: academic
 ---
 
 

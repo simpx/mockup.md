@@ -1,7 +1,7 @@
 ---
 title: AirBed&Breakfast Pitch Deck
 author: Brian Chesky, Joe Gebbia, Nathan Blecharczyk
-theme: startup-blue
+theme: startup
 ---
 
 # 1

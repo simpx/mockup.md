@@ -1,7 +1,7 @@
 ---
 title: Transformers
 author: Introduction to Transformers
-theme: academic-orange
+theme: academic
 ---
 
 

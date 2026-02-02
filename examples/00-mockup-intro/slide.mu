@@ -1,7 +1,7 @@
 ---
 title: Mockup Introduction
 author: Lingjun
-theme: purple-gradient
+theme: startup
 ---
 
 # 1

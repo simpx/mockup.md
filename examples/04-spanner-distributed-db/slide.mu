@@ -1,7 +1,7 @@
 ---
 title: "Spanner: Google's Globally-Distributed Database"
 author: Wilson Hsieh
-theme: google-blue
+theme: tech
 ---
 
 

@@ -25,7 +25,7 @@ This file contains:
 - Full syntax (boxes, layouts, arrows, text, graphics, annotations)
 - Design principles (WYSIWYG, Intent-Driven, AI-Native)
 - Task A: Generate `.mu` from descriptions
-- Task B: Generate images from `.mu` files
+- Task B: Render `.mu` files
 
 Always read `mockup.md` first when working with mockup content.
 
