@@ -49,6 +49,8 @@ author: simpx (simpxx@gmail.com)
 theme: academic
 ---
 
+# 1
+
 ┌────────────────────────────────────────┐
 │                                        │
 │             Slide 1                    │
@@ -57,7 +59,7 @@ theme: academic
 
 > annotations for slide 1
 
----
+# 2
 
 ┌────────────────────────────────────────┐
 │                                        │
@@ -86,26 +88,28 @@ All fields are optional.
 
 ### Slides
 
-The outermost closed rectangular box defines a slide. Use `---` as page separator between slides:
+The outermost closed rectangular box defines a slide. Use `# number` as page marker:
 
 ```
+# 1
+
 ┌────────────────────────────────────────┐
 │              Slide 1                   │
 └────────────────────────────────────────┘
 
----
+# 2
 
 ┌────────────────────────────────────────┐
 │              Slide 2                   │
 └────────────────────────────────────────┘
 ```
 
-**Page Separator Rules**:
-- `---` on its own line marks the boundary between slides (required)
-- Page numbers are automatically incremented (1, 2, 3...)
-- First slide does not need a preceding `---`
-- Two consecutive `---` creates a blank slide
-- Parsing: `content.split(/^---$/m)`
+**Page Marker Rules**:
+- `# number` marks the start of a slide (required)
+- `# number title` adds an optional title (e.g., `# 2 Problem`)
+- Page numbers are explicit, not auto-incremented
+- A page marker with no content creates a blank slide
+- Parsing: `content.split(/^# \d+/m)` or `content.matchAll(/^# (\d+)\s*(.*)?$/gm)`
 
 Recommended width: 60–72 characters (approximately 16:9 aspect ratio).
 
@@ -349,6 +353,8 @@ author: simpx (simpxx@gmail.com)
 theme: academic
 ---
 
+# 1 Cover
+
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                         ┌─┐                                    │
@@ -363,7 +369,7 @@ theme: academic
 
 > Cover slide
 
----
+# 2 Workflow
 
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
@@ -385,8 +391,9 @@ theme: academic
 ## Quick Reference
 
 ```
-Page Separator
----
+Page Marker
+# 1
+# 2 Title
 
 Box Characters
 ─ │ ┌ ┐ └ ┘ ├ ┤ ┬ ┴ ┼
@@ -437,7 +444,7 @@ When a user has pasted this document into a conversation, you are now a Mockup s
 **Step 3: Generate Output**
 - Start with YAML frontmatter (optional but recommended)
 - One outermost box per slide (60-72 characters wide recommended)
-- Use `---` as page separator between slides
+- Use `# number` as page marker for each slide (e.g., `# 1`, `# 2 Title`)
 - Use proper text alignment (position = alignment)
 - Add annotations sparingly
 
@@ -446,7 +453,7 @@ When a user has pasted this document into a conversation, you are now a Mockup s
 **DO:**
 - ✅ Maximize ASCII art (charts, flowcharts, diagrams, UI mockups)
 - ✅ Use emoji for icons and visual interest
-- ✅ Use `---` as page separator between slides
+- ✅ Use `# number` as page marker (e.g., `# 1`, `# 2 Problem`)
 - ✅ Use box hierarchy: `╔═╗` (emphasis) > `┌─┐` (standard) > `┌╌┐` (secondary)
 - ✅ Respect WYSIWYG principle: box position/size = element position/size
 - ✅ Add metadata (title, author, theme) when appropriate
@@ -466,6 +473,8 @@ author: Author Name
 theme: theme-name
 ---
 
+# 1
+
 ┌────────────────────────────────────────┐
 │                                        │
 │         **Slide Title**                │
@@ -476,7 +485,7 @@ theme: theme-name
 
 > annotations if needed
 
----
+# 2
 
 ┌────────────────────────────────────────┐
 │                                        │
@@ -504,7 +513,8 @@ theme: theme-name
 
 **Step 1: Parse Structure**
 - Read YAML frontmatter for theme/metadata
-- Split content by `---` to identify each slide
+- Split content by `# number` to identify each slide
+- Extract page number and optional title from each marker
 - Identify slide boundaries (outermost boxes)
 - Extract annotations (lines starting with `>`)
 
