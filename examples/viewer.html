@@ -294,19 +294,19 @@
     <div class="viewer-container">
         <div class="viewer-card">
             <div class="viewer-tabs">
-                <button class="viewer-tab active" data-tab="gpt-5.2">GPT-5.2</button>
+                <button class="viewer-tab active" data-tab="claude">Claude</button>
                 <button class="viewer-tab" data-tab="notebookllm">NotebookLLM</button>
                 <button class="viewer-tab" data-tab="mockup">Mockup</button>
             </div>
 
             <div class="viewer-content">
                 <!-- AI Output Tabs (first to be default) -->
-                <div class="viewer-panel active" id="panel-gpt-5.2">
-                    <div class="slide-viewer" data-ai="gpt-5.2">
+                <div class="viewer-panel active" id="panel-claude">
+                    <div class="slide-viewer" data-ai="claude">
                         <div class="slide-display">
                             <div class="slide-placeholder">
-                                <span>GPT-5.2 Output</span>
-                                <small>Coming Soon</small>
+                                <span>Claude Output</span>
+                                <small>Loading...</small>
                             </div>
                         </div>
                         <div class="slide-nav">
@@ -391,7 +391,7 @@
             }
         };
 
-        const aiModels = ['gpt-5.2', 'notebookllm'];
+        const aiModels = ['claude', 'notebookllm'];
 
         // Global current slide (shared across all tabs)
         let currentSlide = 1;
