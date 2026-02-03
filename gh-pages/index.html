@@ -25,22 +25,15 @@
 
             <div class="demo-container">
                 <div class="demo-tabs">
-                    <button class="demo-tab active" data-tab="notebookllm">NotebookLLM</button>
-                    <button class="demo-tab" data-tab="mockup">Mockup</button>
+                    <button class="demo-tab active" data-tab="mockup">Mockup</button>
+                    <button class="demo-tab" data-tab="notebookllm">NotebookLLM</button>
+                    <button class="demo-tab" data-tab="gpt">GPT</button>
+                    <button class="demo-tab" data-tab="qwen">Qwen Image</button>
                 </div>
 
                 <div class="demo-content">
-                    <!-- AI Output Tabs (first to be default) -->
-                    <div class="demo-panel active" id="panel-notebookllm">
-                        <div class="slide-viewer">
-                            <div class="slide-display">
-                                <img src="demo/notebookllm.png" alt="NotebookLLM rendered slide" class="demo-slide-img">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Mockup Source Tab -->
-                    <div class="demo-panel" id="panel-mockup">
+                    <!-- Mockup Source Tab (default) -->
+                    <div class="demo-panel active" id="panel-mockup">
                         <pre class="mockup-source"><code>┌────────────────────────────────────────────────────────────────┐
 │                                                                │
 │                         ┌─┐                                    │
@@ -56,6 +49,31 @@
 └────────────────────────────────────────────────────────────────┘
 
 > Cover slide with workflow</code></pre>
+                    </div>
+
+                    <!-- NotebookLLM Tab -->
+                    <div class="demo-panel" id="panel-notebookllm">
+                        <div class="slide-viewer">
+                            <div class="slide-display">
+                                <img src="demo/notebookllm.png" alt="NotebookLLM rendered slide" class="demo-slide-img">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- GPT Tab -->
+                    <div class="demo-panel" id="panel-gpt">
+                        <div class="slide-placeholder" style="text-align: center; color: #a0aec0; padding: 60px;">
+                            <span style="display: block; font-size: 1.5rem; font-weight: 600; margin-bottom: 10px;">GPT Output</span>
+                            <small style="font-size: 1rem; opacity: 0.7;">Coming Soon</small>
+                        </div>
+                    </div>
+
+                    <!-- Qwen Image Tab -->
+                    <div class="demo-panel" id="panel-qwen">
+                        <div class="slide-placeholder" style="text-align: center; color: #a0aec0; padding: 60px;">
+                            <span style="display: block; font-size: 1.5rem; font-weight: 600; margin-bottom: 10px;">Qwen Image Output</span>
+                            <small style="font-size: 1rem; opacity: 0.7;">Coming Soon</small>
+                        </div>
                     </div>
                 </div>
             </div>
