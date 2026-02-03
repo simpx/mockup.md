@@ -294,18 +294,34 @@
     <div class="viewer-container">
         <div class="viewer-card">
             <div class="viewer-tabs">
-                <button class="viewer-tab active" data-tab="notebookllm">NotebookLLM</button>
-                <button class="viewer-tab" data-tab="mockup">Mockup</button>
+                <button class="viewer-tab active" data-tab="mockup">Mockup</button>
+                <button class="viewer-tab" data-tab="notebookllm">NotebookLLM</button>
+                <button class="viewer-tab" data-tab="gpt">GPT</button>
+                <button class="viewer-tab" data-tab="qwen">Qwen Image</button>
             </div>
 
             <div class="viewer-content">
-                <!-- AI Output Tabs (first to be default) -->
-                <div class="viewer-panel active" id="panel-notebookllm">
+                <!-- Mockup Source Tab (default) -->
+                <div class="viewer-panel active" id="panel-mockup">
+                    <div class="loading" id="mockup-loading">Loading mockup source...</div>
+                    <div class="mockup-viewer" id="mockup-viewer" style="display:none;">
+                        <pre class="mockup-source" id="mockup-source"></pre>
+                        <div class="slide-nav">
+                            <button class="slide-prev" id="mockup-prev" disabled>◀ Prev</button>
+                            <span class="slide-counter" id="mockup-counter">1 / 1</span>
+                            <button class="slide-next" id="mockup-next" disabled>Next ▶</button>
+                        </div>
+                        <div class="slide-thumbs" id="mockup-thumbs"></div>
+                    </div>
+                </div>
+
+                <!-- NotebookLLM Tab -->
+                <div class="viewer-panel" id="panel-notebookllm">
                     <div class="slide-viewer" data-ai="notebookllm">
                         <div class="slide-display">
                             <div class="slide-placeholder">
                                 <span>NotebookLLM Output</span>
-                                <small>Coming Soon</small>
+                                <small>Loading...</small>
                             </div>
                         </div>
                         <div class="slide-nav">
@@ -317,17 +333,19 @@
                     </div>
                 </div>
 
-                <!-- Mockup Source Tab -->
-                <div class="viewer-panel" id="panel-mockup">
-                    <div class="loading" id="mockup-loading">Loading mockup source...</div>
-                    <div class="mockup-viewer" id="mockup-viewer" style="display:none;">
-                        <pre class="mockup-source" id="mockup-source"></pre>
-                        <div class="slide-nav">
-                            <button class="slide-prev" id="mockup-prev" disabled>◀ Prev</button>
-                            <span class="slide-counter" id="mockup-counter">1 / 1</span>
-                            <button class="slide-next" id="mockup-next" disabled>Next ▶</button>
-                        </div>
-                        <div class="slide-thumbs" id="mockup-thumbs"></div>
+                <!-- GPT Tab -->
+                <div class="viewer-panel" id="panel-gpt">
+                    <div class="slide-placeholder">
+                        <span>GPT Output</span>
+                        <small>Coming Soon</small>
+                    </div>
+                </div>
+
+                <!-- Qwen Image Tab -->
+                <div class="viewer-panel" id="panel-qwen">
+                    <div class="slide-placeholder">
+                        <span>Qwen Image Output</span>
+                        <small>Coming Soon</small>
                     </div>
                 </div>
             </div>
