@@ -294,31 +294,13 @@
     <div class="viewer-container">
         <div class="viewer-card">
             <div class="viewer-tabs">
-                <button class="viewer-tab active" data-tab="claude">Claude</button>
-                <button class="viewer-tab" data-tab="notebookllm">NotebookLLM</button>
+                <button class="viewer-tab active" data-tab="notebookllm">NotebookLLM</button>
                 <button class="viewer-tab" data-tab="mockup">Mockup</button>
             </div>
 
             <div class="viewer-content">
                 <!-- AI Output Tabs (first to be default) -->
-                <div class="viewer-panel active" id="panel-claude">
-                    <div class="slide-viewer" data-ai="claude">
-                        <div class="slide-display">
-                            <div class="slide-placeholder">
-                                <span>Claude Output</span>
-                                <small>Loading...</small>
-                            </div>
-                        </div>
-                        <div class="slide-nav">
-                            <button class="slide-prev" disabled>◀ Prev</button>
-                            <span class="slide-counter">1 / 1</span>
-                            <button class="slide-next" disabled>Next ▶</button>
-                        </div>
-                        <div class="slide-thumbs"></div>
-                    </div>
-                </div>
-
-                <div class="viewer-panel" id="panel-notebookllm">
+                <div class="viewer-panel active" id="panel-notebookllm">
                     <div class="slide-viewer" data-ai="notebookllm">
                         <div class="slide-display">
                             <div class="slide-placeholder">
@@ -391,7 +373,7 @@
             }
         };
 
-        const aiModels = ['claude', 'notebookllm'];
+        const aiModels = ['notebookllm'];
 
         // Global current slide (shared across all tabs)
         let currentSlide = 1;
