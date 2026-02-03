@@ -1,6 +1,8 @@
 # Mockup Specification <sub>v0.1.0</sub>
 
-Mockup is an ASCII-based layout description language for slides. Define your slide layouts using ASCII characters, and let AI transform them into polished visuals (images, HTML, SVG, etc.).
+Mockup is a layout control language for human-AI collaboration. It provides a human-readable, AI-parseable intermediate representation for visual layouts — like ControlNet uses edge maps to guide image generation, mockup uses ASCII art to guide layout generation.
+
+**Current focus: slides.** This specification defines how to create slide layouts using ASCII characters, and let AI transform them into polished visuals (images, HTML, SVG, etc.).
 
 ## About This Document
 
@@ -14,7 +16,7 @@ Mockup is an ASCII-based layout description language for slides. Define your sli
 
 ## Overview
 
-**The Problem**: When creating slides, content ideation and visual design compete for attention. Mockup separates these concerns — users focus on content and layout intent, while AI handles aesthetics and rendering.
+**The Problem**: When humans collaborate with AI on visual layouts, pure text prompts give unpredictable results, while precise formats (JSON, XML) are unreadable. Mockup bridges this gap — users define layout intent in ASCII, AI handles aesthetics and rendering.
 
 **Design Principles**:
 

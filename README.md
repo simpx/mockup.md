@@ -1,36 +1,39 @@
-# 📊 mockup.md
+# 🔲 mockup.md
 
-**The Markdown for slides.**
+**The Layout Control Language for Human-AI Collaboration.**
+
+When humans collaborate with AI on visual layouts, there's a gap between intent and output. Mockup bridges that gap with a human-readable, AI-parseable intermediate representation.
+
+**Current focus: slides.** Sketch in ASCII, render with AI.
 
 ```mu
 ┌────────────────────────────────────────────────────────────────┐
 │                                                                │
-│                       **mockup.md**                            │
-│                   The Markdown for slides                      │
-│                                                                │
 │   ┌────────────┐      ┌────────────┐      ┌────────────┐      │
 │   │            │      │            │      │            │      │
-│   │  💭 Your   │  ──→ │  📝 .mu    │  ──→ │  🎨 Slide  │      │
-│   │   ideas    │      │   file     │      │   images   │      │
+│   │  💭 Your   │  ──→ │  🔲 .mu    │  ──→ │  🎨 Final  │      │
+│   │   intent   │      │   file     │      │   output   │      │
 │   │            │      │            │      │            │      │
 │   └────────────┘      └────────────┘      └────────────┘      │
 │                                                                │
-│        Describe      AI generates      AI renders             │
-│        content       ASCII layout      polished slides         │
+│      Describe        ASCII layout         AI renders          │
+│      what you want   as skeleton          polished visuals    │
 │                                                                │
 └────────────────────────────────────────────────────────────────┘
 ```
 
 ## The Problem
 
-Making slides is painful. Traditional tools make you juggle content, layout, and styling — exhausting. AI-generated slides give random, inconsistent results — frustrating. AI-generated formats (Mermaid, DrawIO) aren't visual enough, hard to edit and version.
+When humans collaborate with AI on visual outputs, there's a control problem. Pure text prompts give inconsistent, unpredictable layouts. Precise formats (JSON, XML) are unreadable and hard to edit. WYSIWYG tools don't integrate with AI workflows.
 
-**Mockup: sketch in ASCII, render with AI. Simple, predictable, visual.**
+**The missing layer**: a human-readable, AI-parseable intermediate representation for layout — like ControlNet uses edge maps to guide image generation, but for structured visual content.
 
 ## Why Mockup
 
-- **Markdown solved writing** — Focus on content, let the formatter handle typography
-- **Mockup solves slides** — Focus on content and layout, let AI handle styling and rendering
+- **Human-readable** — ASCII art is visual and intuitive, anyone can sketch and edit
+- **AI-parseable** — Clear structure that any LLM can understand and generate
+- **Version-control friendly** — Plain text diffs, easy to track changes
+- **Intent over precision** — Define what goes where, let AI handle the aesthetics
 
 Design principles: WYSIWYG, Intent-Driven, AI-Native. See [mockup.md](./mockup.md) for details.
 
