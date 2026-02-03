@@ -181,8 +181,9 @@
                     <h3>Option 2: Claude Code CLI</h3>
                     <ol>
                         <li>Install the mockup skill:</li>
-                        <pre class="code-block">git clone https://github.com/simpx/mockup.md.git
-cp -rL mockup.md/.claude/skills/mockup ~/.claude/skills/</pre>
+                        <pre class="code-block">mkdir -p ~/.claude/skills/mockup
+curl -o ~/.claude/skills/mockup/SKILL.md https://raw.githubusercontent.com/simpx/mockup.md/main/.claude/skills/mockup/SKILL.md
+curl -o ~/.claude/skills/mockup/mockup.md https://raw.githubusercontent.com/simpx/mockup.md/main/mockup.md</pre>
                         <li>Claude Code will auto-recognize .mu files</li>
                     </ol>
                 </div>
